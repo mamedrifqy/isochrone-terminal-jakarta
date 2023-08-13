@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8a4108421c74e26d845809e3e651450e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+        .maplegend1 {
+          position: absolute;
+          z-index:9999;
+          background-color: rgba(255, 255, 255, .8);
+          border-radius: 5px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          padding: 10px;
+          font: 12px/14px Arial, Helvetica, sans-serif;
+          left: 10px;
+          bottom: 20px;
+        }
+        .maplegend1 .legend-title {
+          text-align: left;
+          margin-bottom: 5px;
+          font-weight: bold;
+          }
+        .maplegend1 .legend-scale ul {
+          margin: 0;
+          margin-bottom: 0px;
+          padding: 0;
+          float: left;
+          list-style: none;
+          }
+        .maplegend1 .legend-scale ul li {
+          list-style: none;
+          margin-left: 0;
+          line-height: 16px;
+          margin-bottom: 2px;
+          }
+        .maplegend1 ul.legend-labels li span {
+          display: block;
+          float: left;
+          height: 14px;
+          width: 14px;
+          margin-right: 5px;
+          margin-left: 0;
+          border: 0px solid #ccc;
+          }
+        .maplegend1 .legend-source {
+          color: #777;
+          clear: both;
+          }
+        .maplegend1 a {
+          color: #777;
+          }
+      </style>
+      
+      
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>$( function() {
+          $( ".maplegend2" ).draggable({
+              start: function (event, ui) {
+                  $(this).css({
+                      right: "auto",
+                      top: "auto",
+                      bottom: "auto"
+                  });
+              }
+          });
+      });
+      </script>
+      <style type='text/css'>
+        .maplegend2 {
+          position: absolute;
+          z-index:9999;
+          background-color: rgba(255, 255, 255, .8);
+          border-radius: 5px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          padding: 10px;
+          font: 12px/14px Arial, Helvetica, sans-serif;
+          right: 10px;
+          bottom: 150px;
+        }
+        .maplegend2 .legend-title {
+          text-align: left;
+          margin-bottom: 5px;
+          font-weight: bold;
+          }
+        .maplegend2 .legend-scale ul {
+          margin: 0;
+          margin-bottom: 0px;
+          padding: 0;
+          float: left;
+          list-style: none;
+          }
+        .maplegend2 .legend-scale ul li {
+          list-style: none;
+          margin-left: 0;
+          line-height: 16px;
+          margin-bottom: 2px;
+          }
+        .maplegend2 ul.legend-labels li span {
+          display: block;
+          float: left;
+          height: 14px;
+          width: 14px;
+          margin-right: 5px;
+          margin-left: 0;
+          border: 0px solid #ccc;
+          }
+        .maplegend2 .legend-source {
+          color: #777;
+          clear: both;
+          }
+        .maplegend2 a {
+          color: #777;
+          }
+      </style>
+      
+      
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>$( function() {
+          $( ".maplegend" ).draggable({
+              start: function (event, ui) {
+                  $(this).css({
+                      right: "auto",
+                      top: "auto",
+                      bottom: "auto"
+                  });
+              }
+          });
+      });
+      </script>
+      <style type='text/css'>
+        .maplegend {
+          position: absolute;
+          z-index:9999;
+          background-color: rgba(255, 255, 255, .8);
+          border-radius: 5px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          padding: 10px;
+          font: 12px/14px Arial, Helvetica, sans-serif;
+          right: 10px;
+          bottom: 20px;
+        }
+        .maplegend .legend-title {
+          text-align: left;
+          margin-bottom: 5px;
+          font-weight: bold;
+          }
+        .maplegend .legend-scale ul {
+          margin: 0;
+          margin-bottom: 0px;
+          padding: 0;
+          float: left;
+          list-style: none;
+          }
+        .maplegend .legend-scale ul li {
+          list-style: none;
+          margin-left: 0;
+          line-height: 16px;
+          margin-bottom: 2px;
+          }
+        .maplegend ul.legend-labels li span {
+          display: block;
+          float: left;
+          height: 14px;
+          width: 14px;
+          margin-right: 5px;
+          margin-left: 0;
+          border: 0px solid #ccc;
+          }
+        .maplegend .legend-source {
+          color: #777;
+          clear: both;
+          }
+        .maplegend a {
+          color: #777;
+          }
+      </style>
+      
+  </head>
+  <body>
+      
+      
+      <div id='maplegend1 time' class='maplegend1'>
+          <div class='legend-title'>Berkendara Motor</div>
+          <div class='legend-scale'>
+              <ul class='legend-labels'>
+                  <li><span style='background:#f7fbff'></span> 0-5 Menit</li>
+                  <li><span style='background:#abd0e6'></span> 5-10 Menit</li>
+                  <li><span style='background:#3787c0'></span>10-15 Menit</li>
+                  <li><span style='background:#08306b'></span>15-20 Menit</li>
+              </ul>
+          </div>
+      </div>
+      
+      
+      <div id='maplegend2 time' class='maplegend2'>
+          <div class='legend-title'>Bersepeda</div>
+          <div class='legend-scale'>
+              <ul class='legend-labels'>
+                  <li><span style='background:#f7fcf5'></span> 0-5 Menit</li>
+                  <li><span style='background:#aedea7'></span> 5-10 Menit</li>
+                  <li><span style='background:#37a055'></span>10-15 Menit</li>
+                  <li><span style='background:#00441b'></span>15-20 Menit</li>
+              </ul>
+          </div>
+      </div>
+      
+      
+      <div id='maplegend time' class='maplegend'>
+          <div class='legend-title'>Berjalan Kaki</div>
+          <div class='legend-scale'>
+              <ul class='legend-labels'>
+                  <li><span style='background:#fff5eb'></span> 0-5 Menit</li>
+                  <li><span style='background:#fdb97d'></span> 5-10 Menit</li>
+                  <li><span style='background:#e95e0d'></span>10-15 Menit</li>
+                  <li><span style='background:#7f2704'></span>15-20 Menit</li>
+              </ul>
+          </div>
+      </div>
+    
+    
+            <link href="https://fonts.googleapis.com/css?family=Outfit:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i | Montserrat: 300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+             <style>
+    #header {
+        border-radius: opx;
+            margin: auto;
+            width: 100%;
+            position: static;
+            z-index: 5;
+            font: bold 30px 'Outfit';
+            text-align: center;
+            color: black;
+            background-image: url('https://mamedrifqy.github.io/assets/img/background.png');
+            background-blend-mode: overlay;
+    }
+            </style>
+            
+            <header id="header">Peta <i>Isochrone</i> Terminal Grogol</header>
+
+            
+        
+            
+             
+    
+            <div class="folium-map" id="map_8a4108421c74e26d845809e3e651450e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8a4108421c74e26d845809e3e651450e = L.map(
+                "map_8a4108421c74e26d845809e3e651450e",
+                {
+                    center: [-6.17334, 106.7893035],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_8a4108421c74e26d845809e3e651450e);
+
+            
+
+        
+    
+            var tile_layer_251b0e11fa941f97c9274890c75972e0 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e, Created by \u003ca target=\"_blank\" href=\"http://mamedrifqy.github.io\"\u003eMuhammad Rifqy\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_8a4108421c74e26d845809e3e651450e);
+        
+    
+            map_8a4108421c74e26d845809e3e651450e.fitBounds(
+                [[-6.240506, 106.716446], [-6.106174, 106.862161]],
+                {}
+            );
+        
+    
+        function geo_json_cd18130b7f5a8b5d8af9831a84a23a92_styler(feature) {
+            switch(feature.id) {
+                case "3": 
+                    return {"color": "black", "fillColor": "#2171b5", "fillOpacity": 0.5, "weight": 2};
+                case "2": 
+                    return {"color": "black", "fillColor": "#6baed6", "fillOpacity": 0.5, "weight": 2};
+                case "1": 
+                    return {"color": "black", "fillColor": "#c6dbef", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "black", "fillColor": "#f7fbff", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_cd18130b7f5a8b5d8af9831a84a23a92_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_cd18130b7f5a8b5d8af9831a84a23a92_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_cd18130b7f5a8b5d8af9831a84a23a92_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_cd18130b7f5a8b5d8af9831a84a23a92_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_cd18130b7f5a8b5d8af9831a84a23a92.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_cd18130b7f5a8b5d8af9831a84a23a92_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_cd18130b7f5a8b5d8af9831a84a23a92 = L.geoJson(null, {
+                onEachFeature: geo_json_cd18130b7f5a8b5d8af9831a84a23a92_onEachFeature,
+            
+                style: geo_json_cd18130b7f5a8b5d8af9831a84a23a92_styler,
+                pointToLayer: geo_json_cd18130b7f5a8b5d8af9831a84a23a92_pointToLayer
+        });
+
+        function geo_json_cd18130b7f5a8b5d8af9831a84a23a92_add (data) {
+            geo_json_cd18130b7f5a8b5d8af9831a84a23a92
+                .addData(data)
+                .addTo(map_8a4108421c74e26d845809e3e651450e);
+        }
+            geo_json_cd18130b7f5a8b5d8af9831a84a23a92_add({"bbox": [106.716446, -6.240506, 106.862161, -6.106174], "features": [{"bbox": [106.716446, -6.240506, 106.862161, -6.106174], "geometry": {"coordinates": [[[106.724748, -6.106174], [106.723028, -6.106506], [106.724616, -6.106639], [106.724687, -6.108568], [106.72641, -6.108845], [106.726614, -6.11064], [106.728279, -6.110975], [106.728543, -6.112711], [106.730093, -6.113162], [106.730451, -6.114804], [106.732205, -6.116506], [106.732091, -6.119849], [106.730432, -6.12219], [106.730748, -6.126889], [106.731626, -6.123384], [106.732851, -6.122506], [106.733805, -6.119563], [106.734748, -6.119277], [106.736748, -6.121448], [106.741449, -6.121805], [106.742748, -6.123814], [106.748773, -6.124481], [106.750748, -6.125397], [106.752748, -6.130128], [106.756994, -6.128752], [106.764748, -6.129403], [106.766748, -6.131417], [106.773384, -6.131871], [106.773047, -6.132805], [106.770748, -6.133976], [106.768748, -6.138373], [106.762748, -6.138736], [106.760748, -6.136335], [106.758748, -6.135765], [106.756748, -6.134007], [106.754667, -6.134588], [106.752748, -6.133986], [106.752511, -6.136506], [106.746748, -6.14679], [106.744748, -6.146988], [106.742748, -6.144793], [106.740748, -6.146426], [106.740442, -6.148506], [106.738748, -6.14961], [106.734279, -6.148975], [106.732748, -6.147225], [106.730592, -6.14835], [106.728889, -6.150506], [106.729941, -6.152506], [106.726748, -6.153112], [106.722748, -6.150998], [106.717705, -6.152506], [106.716446, -6.154809], [106.718748, -6.154845], [106.720748, -6.153453], [106.722748, -6.155878], [106.724748, -6.155815], [106.725443, -6.156506], [106.724411, -6.164506], [106.726271, -6.168506], [106.728412, -6.168842], [106.728748, -6.172464], [106.729072, -6.168182], [106.727915, -6.166506], [106.728748, -6.164235], [106.730748, -6.163616], [106.732555, -6.164699], [106.734703, -6.164551], [106.736648, -6.166607], [106.744748, -6.166685], [106.745856, -6.167399], [106.746432, -6.170822], [106.748265, -6.172506], [106.748147, -6.173905], [106.74674, -6.174515], [106.747127, -6.176128], [106.748748, -6.176981], [106.750748, -6.175329], [106.752813, -6.176506], [106.753958, -6.179297], [106.756144, -6.180506], [106.755818, -6.183576], [106.754376, -6.184506], [106.753878, -6.188506], [106.748163, -6.189091], [106.745216, -6.188506], [106.745708, -6.186506], [106.740043, -6.185801], [106.738675, -6.186506], [106.738268, -6.190026], [106.732748, -6.191044], [106.731139, -6.184506], [106.729293, -6.183961], [106.728748, -6.180219], [106.728609, -6.184506], [106.73038, -6.184875], [106.730462, -6.188506], [106.72977, -6.189528], [106.720748, -6.190311], [106.720489, -6.192247], [106.717619, -6.192506], [106.72082, -6.192578], [106.721071, -6.190829], [106.722748, -6.190745], [106.728992, -6.192263], [106.733667, -6.198506], [106.734142, -6.200506], [106.736115, -6.201139], [106.736628, -6.204626], [106.73845, -6.204805], [106.738748, -6.206459], [106.7389, -6.204354], [106.737779, -6.203475], [106.73718, -6.200074], [106.735898, -6.198506], [106.736748, -6.19697], [106.738774, -6.196532], [106.740748, -6.194313], [106.743093, -6.196506], [106.742627, -6.198628], [106.744963, -6.198721], [106.747063, -6.196506], [106.745972, -6.194506], [106.749223, -6.194031], [106.750858, -6.196506], [106.750686, -6.198569], [106.753923, -6.199331], [106.754748, -6.200827], [106.756748, -6.201024], [106.75797, -6.199728], [106.760748, -6.199151], [106.765637, -6.200506], [106.765428, -6.202506], [106.768133, -6.207122], [106.769944, -6.208506], [106.770748, -6.212133], [106.772709, -6.210506], [106.771682, -6.208506], [106.773101, -6.20486], [106.774683, -6.204441], [106.775868, -6.201626], [106.777928, -6.201326], [106.782748, -6.206358], [106.784052, -6.20381], [106.785651, -6.203604], [106.788712, -6.206506], [106.788748, -6.208953], [106.792748, -6.210863], [106.794748, -6.209148], [106.795892, -6.210506], [106.795304, -6.213062], [106.792088, -6.215846], [106.791931, -6.218506], [106.790037, -6.220506], [106.789414, -6.223172], [106.788181, -6.223939], [106.787141, -6.226899], [106.784971, -6.228506], [106.786332, -6.230922], [106.788081, -6.230506], [106.787986, -6.227744], [106.789351, -6.227903], [106.789813, -6.230506], [106.790467, -6.230788], [106.792846, -6.228604], [106.792894, -6.224506], [106.79492, -6.222678], [106.795832, -6.21959], [106.796748, -6.219086], [106.798087, -6.220506], [106.798748, -6.225947], [106.800146, -6.223904], [106.803461, -6.223219], [106.801823, -6.221431], [106.800632, -6.218391], [106.806748, -6.216982], [106.808824, -6.21843], [106.809742, -6.220506], [106.808748, -6.221666], [106.806748, -6.221777], [106.803871, -6.223629], [106.803992, -6.226506], [106.806748, -6.226624], [106.812668, -6.224426], [106.815442, -6.225813], [106.81785, -6.228506], [106.818217, -6.231038], [106.822274, -6.234981], [106.8244, -6.236854], [106.830279, -6.238975], [106.830846, -6.240506], [106.83111, -6.238506], [106.829647, -6.237607], [106.829131, -6.236124], [106.826131, -6.235123], [106.824225, -6.233029], [106.81966, -6.225594], [106.81843, -6.224825], [106.817991, -6.222506], [106.818748, -6.220929], [106.81993, -6.223325], [106.824066, -6.225188], [106.828748, -6.225002], [106.829905, -6.225349], [106.830748, -6.226801], [106.834748, -6.226779], [106.834748, -6.226179], [106.831908, -6.225347], [106.831239, -6.224016], [106.826312, -6.222943], [106.825883, -6.221372], [106.822426, -6.218828], [106.823907, -6.216506], [106.823501, -6.215753], [106.822334, -6.21492], [106.820748, -6.215031], [106.820511, -6.214269], [106.821792, -6.21355], [106.82258, -6.210506], [106.823676, -6.209434], [106.82379, -6.206506], [106.824748, -6.2058], [106.826999, -6.206255], [106.827435, -6.208506], [106.82964, -6.210506], [106.830748, -6.218711], [106.832104, -6.213862], [106.834748, -6.214089], [106.835597, -6.212506], [106.834832, -6.20859], [106.840628, -6.206506], [106.839366, -6.205888], [106.838748, -6.204198], [106.834748, -6.201606], [106.831925, -6.201683], [106.831001, -6.202759], [106.826748, -6.202338], [106.830893, -6.200651], [106.831249, -6.199007], [106.835475, -6.196506], [106.836639, -6.194397], [106.838073, -6.195181], [106.840467, -6.194506], [106.841336, -6.190506], [106.844036, -6.187794], [106.845579, -6.188506], [106.845837, -6.190506], [106.848516, -6.190738], [106.848787, -6.192545], [106.849167, -6.186506], [106.846546, -6.184708], [106.847263, -6.183021], [106.847101, -6.178506], [106.846001, -6.177254], [106.846047, -6.175805], [106.852178, -6.174506], [106.849673, -6.173581], [106.846263, -6.170506], [106.848443, -6.170506], [106.847786, -6.171469], [106.848748, -6.171962], [106.849664, -6.167422], [106.850777, -6.166477], [106.850067, -6.164506], [106.853155, -6.162913], [106.852395, -6.154153], [106.855517, -6.153737], [106.858748, -6.155181], [106.862161, -6.154506], [106.858748, -6.147064], [106.856748, -6.147808], [106.8502, -6.147055], [106.848748, -6.141139], [106.847727, -6.142506], [106.848422, -6.142833], [106.848126, -6.146506], [106.844748, -6.149515], [106.838384, -6.14687], [106.836136, -6.142506], [106.838654, -6.140506], [106.837802, -6.138506], [106.841313, -6.135071], [106.843807, -6.129565], [106.846246, -6.129008], [106.846748, -6.130902], [106.847319, -6.127077], [106.852824, -6.126582], [106.852931, -6.124689], [106.854895, -6.124506], [106.852658, -6.124416], [106.852254, -6.126012], [106.844748, -6.125504], [106.843815, -6.127574], [106.842748, -6.127982], [106.836748, -6.12709], [106.830748, -6.12746], [106.82967, -6.126506], [106.830748, -6.124232], [106.826549, -6.124307], [106.824748, -6.125483], [106.823109, -6.124145], [106.822748, -6.12229], [106.819516, -6.123274], [106.818748, -6.126507], [106.814748, -6.125984], [106.812748, -6.123626], [106.808601, -6.122653], [106.806748, -6.119179], [106.80469, -6.118564], [106.802748, -6.116806], [106.80178, -6.120506], [106.800397, -6.120857], [106.799521, -6.117734], [106.796285, -6.116506], [106.796343, -6.114101], [106.797495, -6.113253], [106.798582, -6.110506], [106.796615, -6.108373], [106.792548, -6.108306], [106.787811, -6.111569], [106.782921, -6.112506], [106.783136, -6.114894], [106.780748, -6.114507], [106.778157, -6.116506], [106.780068, -6.120506], [106.778748, -6.12271], [106.778257, -6.120997], [106.758748, -6.121738], [106.752748, -6.120631], [106.744748, -6.121629], [106.742748, -6.119088], [106.740748, -6.119967], [106.737913, -6.119341], [106.735805, -6.117449], [106.734748, -6.114719], [106.731512, -6.113742], [106.729301, -6.109953], [106.726925, -6.108329], [106.72488, -6.108374], [106.724748, -6.106174]]], "type": "Polygon"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#2171b5", "time": 20}, "type": "Feature"}, {"bbox": [106.734302, -6.2165, 106.842788, -6.121764], "geometry": {"coordinates": [[[106.790748, -6.121764], [106.789504, -6.125262], [106.786318, -6.126506], [106.786347, -6.128506], [106.782748, -6.129382], [106.778108, -6.125146], [106.777013, -6.122241], [106.764076, -6.122506], [106.767436, -6.124506], [106.770748, -6.125243], [106.771562, -6.123321], [106.773709, -6.123545], [106.783151, -6.134104], [106.783528, -6.137287], [106.782748, -6.138224], [106.781014, -6.138506], [106.781177, -6.140506], [106.779127, -6.140885], [106.77755, -6.142506], [106.77424, -6.143998], [106.772748, -6.146489], [106.768429, -6.146825], [106.766057, -6.145815], [106.764986, -6.148744], [106.762283, -6.150041], [106.760748, -6.154757], [106.756748, -6.152084], [106.755925, -6.153683], [106.752748, -6.153767], [106.750748, -6.155397], [106.748748, -6.153496], [106.738748, -6.153265], [106.734302, -6.154506], [106.738748, -6.156731], [106.741908, -6.157347], [106.742748, -6.158868], [106.744748, -6.159475], [106.746748, -6.161705], [106.748748, -6.161775], [106.750748, -6.159328], [106.752319, -6.162506], [106.754089, -6.163165], [106.757109, -6.166145], [106.757303, -6.169061], [106.756614, -6.170506], [106.757797, -6.171457], [106.758748, -6.17507], [106.760226, -6.173984], [106.762748, -6.174396], [106.764688, -6.176566], [106.765001, -6.178506], [106.766101, -6.179153], [106.766748, -6.182567], [106.770748, -6.176666], [106.772748, -6.175612], [106.774414, -6.17684], [106.774174, -6.18108], [106.775452, -6.184506], [106.774769, -6.186527], [106.769828, -6.187586], [106.768748, -6.188869], [106.766133, -6.189891], [106.756624, -6.190506], [106.768748, -6.192207], [106.772748, -6.19039], [106.780748, -6.189104], [106.783706, -6.190506], [106.784748, -6.193161], [106.78827, -6.192028], [106.794748, -6.191559], [106.794898, -6.198506], [106.794064, -6.200506], [106.79716, -6.202095], [106.798183, -6.204506], [106.79805, -6.206506], [106.801665, -6.20759], [106.802391, -6.208863], [106.803913, -6.209342], [106.805926, -6.212506], [106.808361, -6.212894], [106.808748, -6.2165], [106.809454, -6.215212], [106.809234, -6.212506], [106.807947, -6.210506], [106.805992, -6.209263], [106.804678, -6.204436], [106.805005, -6.202506], [106.803474, -6.20178], [106.803891, -6.199649], [106.805626, -6.198506], [106.805951, -6.194506], [106.806748, -6.194204], [106.808748, -6.19679], [106.809801, -6.193559], [106.812044, -6.191802], [106.813182, -6.192073], [106.812326, -6.200506], [106.812885, -6.202506], [106.815799, -6.203456], [106.816748, -6.205726], [106.819283, -6.202506], [106.818009, -6.200506], [106.818819, -6.198577], [106.820748, -6.197075], [106.821767, -6.194506], [106.821656, -6.191598], [106.820748, -6.189959], [106.822748, -6.189337], [106.826059, -6.185817], [106.830254, -6.186012], [106.832748, -6.184554], [106.833774, -6.182506], [106.83212, -6.180506], [106.832912, -6.178506], [106.834748, -6.177084], [106.835297, -6.175055], [106.841479, -6.171238], [106.842788, -6.168506], [106.841276, -6.164506], [106.841896, -6.162506], [106.8414, -6.159854], [106.836748, -6.156276], [106.834748, -6.159182], [106.833521, -6.157734], [106.830748, -6.156692], [106.828555, -6.158699], [106.827681, -6.154506], [106.828025, -6.152506], [106.827116, -6.150506], [106.828788, -6.148506], [106.828125, -6.14713], [106.82291, -6.144344], [106.822144, -6.142506], [106.819939, -6.140506], [106.819499, -6.138506], [106.822685, -6.136506], [106.818748, -6.136234], [106.818022, -6.13778], [106.814748, -6.137523], [106.813607, -6.136506], [106.813292, -6.134506], [106.81237, -6.134129], [106.810494, -6.134252], [106.808984, -6.136742], [106.806748, -6.13471], [106.804748, -6.13606], [106.800064, -6.13719], [106.796748, -6.134801], [106.79468, -6.134506], [106.80611, -6.133868], [106.808748, -6.131553], [106.818713, -6.130542], [106.818748, -6.131105], [106.818762, -6.130493], [106.815093, -6.130162], [106.814748, -6.128297], [106.814336, -6.130094], [106.812748, -6.130197], [106.806748, -6.129599], [106.804748, -6.128278], [106.802748, -6.130798], [106.794748, -6.131193], [106.793985, -6.130506], [106.793958, -6.127716], [106.795306, -6.124506], [106.794748, -6.123754], [106.791921, -6.123333], [106.790748, -6.121764]]], "type": "Polygon"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#6baed6", "time": 15}, "type": "Feature"}, {"bbox": [106.763082, -6.191086, 106.826789, -6.138371], "geometry": {"coordinates": [[[106.786748, -6.138371], [106.786625, -6.14263], [106.789778, -6.145476], [106.790198, -6.149056], [106.791157, -6.150506], [106.790748, -6.152925], [106.785087, -6.158506], [106.780175, -6.159933], [106.778748, -6.161123], [106.776748, -6.160162], [106.772748, -6.161179], [106.769883, -6.159372], [106.768748, -6.157408], [106.763082, -6.158506], [106.76602, -6.160506], [106.766748, -6.165178], [106.770748, -6.167883], [106.772748, -6.166531], [106.774748, -6.167631], [106.77751, -6.167744], [106.778171, -6.173084], [106.780748, -6.175962], [106.782748, -6.176506], [106.786748, -6.174988], [106.788077, -6.176506], [106.788314, -6.178506], [106.790042, -6.179212], [106.790671, -6.182506], [106.790189, -6.183947], [106.786962, -6.184506], [106.792748, -6.184983], [106.793327, -6.183085], [106.795823, -6.183432], [106.796748, -6.191086], [106.799206, -6.186506], [106.799592, -6.182506], [106.798311, -6.180944], [106.798748, -6.179935], [106.801503, -6.179751], [106.802748, -6.181996], [106.805446, -6.180506], [106.806748, -6.178453], [106.810748, -6.179707], [106.811835, -6.183419], [106.814748, -6.186056], [106.81731, -6.179068], [106.820287, -6.176506], [106.819792, -6.172506], [106.820748, -6.171776], [106.822748, -6.172084], [106.823768, -6.170506], [106.822974, -6.168506], [106.824748, -6.168188], [106.826789, -6.166506], [106.824748, -6.165571], [106.823733, -6.163521], [106.820405, -6.160849], [106.820441, -6.154506], [106.818118, -6.153137], [106.816748, -6.149614], [106.814748, -6.151626], [106.809058, -6.144506], [106.806748, -6.143333], [106.804495, -6.144506], [106.802748, -6.148867], [106.794748, -6.148832], [106.792209, -6.147045], [106.791206, -6.144048], [106.788748, -6.142207], [106.787074, -6.14218], [106.786748, -6.138371]]], "type": "Polygon"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#c6dbef", "time": 10}, "type": "Feature"}, {"bbox": [106.783209, -6.172712, 106.814321, -6.154372], "geometry": {"coordinates": [[[106.796748, -6.154372], [106.795007, -6.154765], [106.794374, -6.160506], [106.78571, -6.162506], [106.785241, -6.164999], [106.783209, -6.166506], [106.787483, -6.167771], [106.788748, -6.172712], [106.790825, -6.172583], [106.790063, -6.171191], [106.79057, -6.168328], [106.794748, -6.170316], [106.797199, -6.170055], [106.798748, -6.171986], [106.800748, -6.171257], [106.802748, -6.1718], [106.80386, -6.167618], [106.810748, -6.167584], [106.81201, -6.165768], [106.814321, -6.164506], [106.811882, -6.163372], [106.810748, -6.160541], [106.808748, -6.158239], [106.806748, -6.159825], [106.806039, -6.161797], [106.803158, -6.164916], [106.8024, -6.164855], [106.800748, -6.157916], [106.798332, -6.158923], [106.796748, -6.154372]]], "type": "Polygon"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#f7fbff", "time": 5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_cd18130b7f5a8b5d8af9831a84a23a92.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["time"];
+    let aliases = ["Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_cd18130b7f5a8b5d8af9831a84a23a92.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK", "time"];
+    let aliases = ["Nama Terminal:", "Jenis:", "Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_b5f4fd699038f332d05381a08c17a4be_styler(feature) {
+            switch(feature.id) {
+                case "3": 
+                    return {"color": "black", "fillColor": "#238b45", "fillOpacity": 0.5, "weight": 2};
+                case "2": 
+                    return {"color": "black", "fillColor": "#74c476", "fillOpacity": 0.5, "weight": 2};
+                case "1": 
+                    return {"color": "black", "fillColor": "#c7e9c0", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "black", "fillColor": "#f7fcf5", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_b5f4fd699038f332d05381a08c17a4be_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_b5f4fd699038f332d05381a08c17a4be_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_b5f4fd699038f332d05381a08c17a4be_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_b5f4fd699038f332d05381a08c17a4be_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_b5f4fd699038f332d05381a08c17a4be.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_b5f4fd699038f332d05381a08c17a4be_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_b5f4fd699038f332d05381a08c17a4be = L.geoJson(null, {
+                onEachFeature: geo_json_b5f4fd699038f332d05381a08c17a4be_onEachFeature,
+            
+                style: geo_json_b5f4fd699038f332d05381a08c17a4be_styler,
+                pointToLayer: geo_json_b5f4fd699038f332d05381a08c17a4be_pointToLayer
+        });
+
+        function geo_json_b5f4fd699038f332d05381a08c17a4be_add (data) {
+            geo_json_b5f4fd699038f332d05381a08c17a4be
+                .addData(data)
+                .addTo(map_8a4108421c74e26d845809e3e651450e);
+        }
+            geo_json_b5f4fd699038f332d05381a08c17a4be_add({"bbox": [106.755279, -6.19793, 106.833533, -6.133566], "features": [{"bbox": [106.755279, -6.19793, 106.833533, -6.133566], "geometry": {"coordinates": [[[106.803748, -6.133566], [106.802396, -6.134155], [106.801748, -6.135722], [106.801511, -6.134506], [106.800748, -6.134086], [106.800165, -6.136506], [106.800318, -6.138506], [106.799748, -6.139093], [106.79843, -6.139188], [106.797748, -6.141726], [106.794454, -6.141801], [106.794147, -6.140107], [106.793419, -6.139506], [106.793439, -6.136506], [106.792748, -6.134189], [106.79221, -6.135506], [106.791748, -6.140945], [106.790748, -6.140195], [106.789748, -6.140002], [106.789035, -6.139219], [106.786714, -6.13854], [106.785976, -6.137278], [106.784768, -6.136487], [106.78373, -6.136506], [106.782748, -6.137346], [106.782532, -6.13829], [106.781492, -6.139506], [106.781748, -6.140787], [106.780011, -6.141769], [106.777412, -6.14417], [106.776748, -6.145989], [106.775317, -6.146506], [106.775019, -6.148777], [106.774437, -6.148817], [106.773748, -6.147543], [106.772639, -6.148397], [106.77214, -6.150898], [106.771748, -6.150776], [106.771505, -6.151506], [106.770449, -6.152207], [106.770327, -6.153506], [106.769457, -6.154215], [106.768748, -6.156411], [106.767979, -6.155276], [106.765748, -6.154986], [106.765337, -6.155095], [106.764567, -6.156688], [106.763998, -6.156506], [106.763453, -6.155506], [106.762719, -6.155477], [106.762592, -6.157506], [106.761748, -6.158254], [106.760178, -6.158076], [106.759748, -6.157285], [106.757641, -6.157506], [106.758395, -6.15886], [106.758207, -6.159965], [106.757572, -6.16033], [106.757147, -6.161905], [106.755742, -6.162506], [106.756859, -6.165617], [106.755748, -6.165346], [106.755279, -6.166506], [106.755748, -6.167755], [106.756859, -6.168506], [106.756355, -6.169113], [106.755706, -6.171506], [106.756748, -6.171837], [106.757172, -6.172506], [106.75687, -6.173506], [106.757748, -6.175781], [106.758748, -6.176474], [106.759431, -6.175189], [106.760508, -6.175266], [106.760271, -6.174984], [106.760748, -6.174285], [106.760771, -6.175506], [106.761748, -6.175843], [106.762839, -6.175597], [106.762986, -6.174506], [106.764748, -6.173758], [106.765462, -6.178506], [106.766514, -6.179506], [106.766748, -6.180991], [106.767748, -6.180982], [106.767941, -6.181313], [106.768129, -6.182506], [106.767587, -6.183506], [106.767748, -6.184373], [106.768748, -6.184332], [106.77094, -6.186314], [106.772117, -6.188138], [106.771657, -6.189506], [106.772773, -6.189531], [106.773048, -6.188806], [106.774748, -6.188803], [106.775408, -6.188166], [106.777748, -6.188205], [106.778748, -6.187311], [106.781629, -6.187387], [106.7819, -6.186658], [106.782759, -6.186495], [106.782886, -6.187644], [106.782048, -6.187806], [106.781909, -6.188667], [106.781206, -6.189506], [106.781326, -6.191506], [106.780891, -6.19265], [106.779744, -6.193502], [106.780748, -6.194411], [106.781748, -6.196357], [106.782748, -6.195741], [106.783748, -6.19672], [106.785748, -6.196838], [106.786748, -6.196131], [106.787748, -6.196773], [106.789221, -6.195506], [106.78912, -6.193506], [106.790748, -6.192348], [106.791748, -6.192639], [106.791979, -6.191738], [106.792754, -6.191506], [106.79244, -6.190506], [106.796595, -6.189354], [106.797509, -6.189745], [106.797748, -6.191258], [106.799971, -6.191283], [106.800345, -6.192506], [106.801748, -6.193415], [106.802999, -6.192506], [106.803546, -6.191304], [106.804872, -6.191506], [106.806224, -6.194506], [106.807768, -6.195486], [106.808748, -6.196887], [106.809326, -6.196084], [106.810121, -6.196134], [106.810306, -6.197064], [106.809431, -6.197506], [106.810748, -6.19793], [106.810907, -6.195348], [106.810328, -6.194506], [106.810748, -6.193081], [106.813545, -6.192303], [106.814511, -6.192744], [106.814748, -6.193613], [106.815047, -6.193506], [106.8157, -6.191506], [106.818016, -6.190506], [106.818595, -6.189506], [106.8179, -6.188506], [106.816461, -6.187794], [106.816513, -6.185506], [106.815787, -6.184506], [106.816146, -6.183904], [106.817748, -6.182821], [106.819542, -6.182506], [106.819166, -6.181506], [106.819484, -6.181242], [106.820066, -6.181189], [106.820748, -6.181758], [106.82326, -6.180506], [106.822748, -6.179926], [106.82254, -6.178506], [106.821463, -6.177792], [106.821341, -6.176914], [106.821482, -6.17624], [106.822133, -6.176122], [106.822559, -6.176506], [106.822495, -6.17776], [106.822785, -6.177543], [106.823731, -6.172489], [106.829748, -6.172044], [106.829837, -6.170417], [106.826748, -6.168976], [106.826506, -6.168265], [106.829778, -6.168476], [106.830748, -6.169102], [106.832072, -6.16883], [106.832748, -6.168506], [106.83293, -6.166688], [106.833533, -6.166506], [106.832094, -6.165506], [106.830251, -6.165003], [106.829748, -6.1642], [106.827748, -6.163884], [106.826748, -6.164848], [106.824568, -6.164686], [106.824748, -6.164008], [106.826181, -6.163939], [106.827599, -6.162506], [106.827687, -6.161568], [106.826975, -6.160506], [106.827755, -6.158513], [106.826929, -6.157326], [106.826839, -6.151415], [106.825958, -6.150297], [106.823348, -6.149906], [106.823338, -6.149096], [106.82463, -6.148506], [106.823417, -6.147837], [106.82276, -6.146506], [106.821748, -6.145745], [106.820748, -6.142939], [106.818748, -6.142114], [106.817748, -6.141051], [106.816748, -6.143074], [106.815236, -6.141506], [106.815193, -6.140061], [106.81457, -6.138506], [106.813876, -6.138378], [106.813748, -6.137419], [106.812748, -6.137756], [106.811748, -6.137024], [106.807316, -6.136939], [106.806748, -6.135524], [106.805301, -6.134953], [106.803748, -6.133566]]], "type": "Polygon"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#238b45", "time": 20}, "type": "Feature"}, {"bbox": [106.764198, -6.187864, 106.823997, -6.142497], "geometry": {"coordinates": [[[106.800748, -6.142497], [106.799748, -6.142676], [106.798548, -6.144506], [106.796512, -6.146506], [106.796842, -6.147506], [106.795748, -6.148031], [106.794748, -6.14919], [106.79398, -6.148506], [106.793748, -6.146408], [106.792748, -6.147287], [106.792155, -6.1461], [106.791153, -6.145506], [106.790761, -6.144493], [106.788748, -6.144287], [106.788611, -6.145506], [106.789247, -6.146007], [106.789237, -6.146995], [106.788347, -6.148105], [106.786562, -6.148506], [106.785248, -6.150006], [106.784837, -6.150506], [106.785376, -6.151506], [106.784511, -6.151743], [106.783748, -6.151275], [106.781748, -6.153248], [106.780748, -6.153124], [106.778748, -6.153792], [106.775748, -6.156336], [106.775317, -6.158075], [106.772748, -6.158363], [106.77239, -6.159148], [106.771748, -6.15946], [106.768964, -6.159291], [106.768814, -6.158441], [106.767889, -6.158365], [106.76762, -6.157506], [106.767309, -6.159067], [106.76634, -6.160098], [106.764745, -6.160506], [106.764198, -6.161506], [106.764631, -6.162506], [106.764748, -6.165138], [106.766365, -6.166506], [106.765475, -6.167506], [106.766526, -6.167729], [106.767748, -6.169622], [106.768748, -6.169169], [106.769748, -6.169878], [106.770773, -6.169531], [106.771195, -6.168953], [106.772507, -6.168748], [106.773934, -6.169692], [106.77433, -6.169506], [106.774293, -6.168506], [106.775426, -6.168184], [106.775602, -6.167361], [106.777881, -6.167373], [106.777996, -6.169258], [106.778897, -6.169506], [106.778108, -6.169866], [106.777912, -6.17167], [106.777449, -6.171805], [106.776748, -6.170612], [106.775338, -6.170096], [106.774933, -6.170506], [106.77509, -6.171848], [106.77409, -6.173506], [106.774748, -6.174836], [106.775748, -6.174421], [106.776801, -6.175506], [106.775212, -6.177506], [106.77479, -6.179506], [106.775748, -6.180622], [106.776748, -6.180752], [106.777748, -6.181924], [106.778748, -6.182022], [106.779748, -6.18323], [106.780764, -6.18349], [106.781244, -6.184506], [106.780722, -6.185532], [106.783467, -6.185788], [106.783748, -6.187864], [106.784018, -6.186506], [106.785159, -6.184917], [106.787176, -6.184506], [106.788748, -6.18276], [106.789887, -6.182645], [106.790135, -6.181506], [106.789629, -6.178506], [106.790748, -6.177111], [106.792169, -6.178085], [106.792748, -6.180767], [106.793738, -6.179496], [106.796356, -6.179899], [106.796748, -6.185531], [106.797372, -6.18513], [106.797452, -6.183506], [106.798496, -6.181254], [106.799748, -6.180319], [106.799642, -6.181506], [106.800748, -6.183054], [106.802748, -6.184574], [106.803748, -6.184362], [106.805748, -6.185571], [106.80683, -6.184425], [106.808748, -6.185265], [106.80927, -6.186506], [106.809897, -6.186655], [106.810748, -6.185586], [106.811063, -6.183506], [106.811055, -6.180506], [106.810401, -6.179506], [106.810317, -6.177938], [106.809605, -6.177506], [106.810307, -6.174506], [106.810885, -6.174506], [106.81137, -6.177506], [106.812189, -6.178065], [106.812655, -6.180599], [106.813501, -6.180753], [106.813748, -6.181714], [106.815212, -6.179506], [106.813395, -6.178859], [106.813441, -6.178199], [106.819795, -6.174553], [106.81967, -6.173506], [106.81829, -6.172506], [106.819129, -6.171887], [106.819353, -6.170111], [106.820748, -6.168783], [106.821301, -6.168953], [106.821682, -6.170572], [106.822586, -6.170344], [106.82252, -6.168506], [106.821606, -6.167648], [106.821534, -6.166506], [106.823997, -6.165755], [106.823858, -6.163506], [106.822748, -6.163335], [106.821748, -6.162472], [106.821206, -6.162965], [106.820388, -6.162867], [106.820074, -6.16118], [106.819231, -6.160506], [106.819293, -6.156506], [106.81809, -6.154506], [106.817864, -6.15239], [106.817165, -6.152089], [106.816748, -6.151112], [106.815327, -6.149927], [106.81442, -6.148506], [106.812748, -6.147836], [106.811748, -6.146596], [106.810748, -6.146582], [106.809748, -6.147505], [106.807695, -6.146506], [106.806748, -6.145062], [106.80571, -6.146544], [106.803748, -6.145534], [106.800748, -6.142497]]], "type": "Polygon"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#74c476", "time": 15}, "type": "Feature"}, {"bbox": [106.774711, -6.176506, 106.816801, -6.152276], "geometry": {"coordinates": [[[106.800748, -6.152276], [106.799843, -6.153601], [106.798748, -6.154301], [106.797884, -6.153371], [106.796851, -6.153404], [106.796374, -6.152506], [106.795877, -6.152378], [106.793348, -6.153106], [106.792904, -6.154662], [106.791885, -6.155506], [106.791035, -6.157506], [106.787871, -6.158506], [106.787609, -6.159506], [106.78569, -6.160449], [106.786093, -6.161506], [106.783748, -6.161833], [106.782748, -6.160954], [106.7779, -6.161506], [106.77936, -6.161894], [106.779776, -6.162506], [106.779586, -6.163344], [106.778748, -6.163574], [106.777748, -6.163047], [106.775748, -6.16298], [106.775131, -6.164506], [106.776021, -6.165779], [106.774748, -6.166196], [106.774711, -6.166506], [106.778353, -6.166902], [106.778659, -6.168596], [106.779449, -6.168806], [106.779642, -6.169506], [106.779561, -6.171506], [106.780748, -6.172669], [106.783309, -6.173945], [106.783748, -6.174803], [106.784175, -6.173933], [106.784928, -6.173506], [106.784375, -6.172506], [106.784231, -6.171023], [106.783748, -6.171094], [106.783479, -6.170506], [106.783908, -6.170347], [106.784261, -6.170994], [106.784748, -6.171064], [106.786748, -6.170604], [106.786953, -6.169711], [106.788022, -6.170233], [106.788343, -6.171911], [106.791748, -6.174845], [106.792401, -6.174506], [106.792748, -6.17166], [106.793562, -6.17132], [106.794134, -6.171506], [106.794805, -6.172506], [106.79444, -6.174506], [106.794748, -6.175134], [106.795763, -6.175521], [106.796064, -6.174506], [106.796748, -6.173986], [106.798691, -6.176506], [106.799444, -6.176202], [106.800078, -6.174506], [106.800748, -6.173954], [106.802104, -6.17415], [106.802748, -6.17509], [106.80602, -6.174778], [106.805845, -6.173409], [106.804269, -6.171986], [106.803938, -6.170317], [106.802371, -6.168883], [106.802409, -6.167167], [106.803748, -6.166113], [106.809748, -6.166279], [106.810404, -6.166506], [106.810748, -6.167938], [106.811748, -6.167205], [106.811999, -6.166506], [106.816801, -6.165559], [106.816748, -6.164603], [106.814748, -6.164263], [106.813748, -6.162444], [106.813481, -6.163506], [106.812748, -6.164357], [106.812084, -6.163506], [106.811666, -6.161506], [106.812288, -6.160506], [106.811301, -6.159953], [106.810748, -6.159063], [106.809748, -6.159393], [106.80915, -6.157506], [106.808141, -6.157113], [106.807748, -6.156493], [106.806648, -6.156607], [106.805121, -6.155133], [106.801748, -6.155436], [106.800748, -6.152276]]], "type": "Polygon"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#c7e9c0", "time": 10}, "type": "Feature"}, {"bbox": [106.785595, -6.167345, 106.804166, -6.160332], "geometry": {"coordinates": [[[106.797748, -6.160382], [106.796748, -6.160332], [106.796337, -6.161506], [106.790339, -6.162097], [106.789022, -6.16278], [106.788748, -6.16331], [106.786748, -6.163848], [106.786554, -6.165312], [106.785595, -6.166506], [106.787748, -6.16678], [106.788748, -6.167345], [106.789748, -6.166956], [106.800437, -6.167195], [106.802751, -6.166509], [106.80286, -6.165618], [106.804166, -6.165506], [106.799748, -6.163325], [106.799085, -6.162169], [106.798421, -6.161833], [106.797748, -6.160382]]], "type": "Polygon"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#f7fcf5", "time": 5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_b5f4fd699038f332d05381a08c17a4be.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["time"];
+    let aliases = ["Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_b5f4fd699038f332d05381a08c17a4be.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK", "time"];
+    let aliases = ["Nama Terminal:", "Jenis:", "Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_cd7d498a3394530e86dcde88e3e5f500_styler(feature) {
+            switch(feature.id) {
+                case "3": 
+                    return {"color": "black", "fillColor": "#d94801", "fillOpacity": 0.5, "weight": 2};
+                case "2": 
+                    return {"color": "black", "fillColor": "#fd8d3c", "fillOpacity": 0.5, "weight": 2};
+                case "1": 
+                    return {"color": "black", "fillColor": "#fdd0a2", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "black", "fillColor": "#fff5eb", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_cd7d498a3394530e86dcde88e3e5f500_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_cd7d498a3394530e86dcde88e3e5f500_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_cd7d498a3394530e86dcde88e3e5f500_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_cd7d498a3394530e86dcde88e3e5f500_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_cd7d498a3394530e86dcde88e3e5f500.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_cd7d498a3394530e86dcde88e3e5f500_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_cd7d498a3394530e86dcde88e3e5f500 = L.geoJson(null, {
+                onEachFeature: geo_json_cd7d498a3394530e86dcde88e3e5f500_onEachFeature,
+            
+                style: geo_json_cd7d498a3394530e86dcde88e3e5f500_styler,
+                pointToLayer: geo_json_cd7d498a3394530e86dcde88e3e5f500_pointToLayer
+        });
+
+        function geo_json_cd7d498a3394530e86dcde88e3e5f500_add (data) {
+            geo_json_cd7d498a3394530e86dcde88e3e5f500
+                .addData(data)
+                .addTo(map_8a4108421c74e26d845809e3e651450e);
+        }
+            geo_json_cd7d498a3394530e86dcde88e3e5f500_add({"bbox": [106.775736, -6.177732, 106.805991, -6.153418], "features": [{"bbox": [106.775736, -6.177732, 106.805991, -6.153418], "geometry": {"coordinates": [[[106.793748, -6.153418], [106.790748, -6.15487], [106.788748, -6.15493], [106.783435, -6.158506], [106.782634, -6.15962], [106.782973, -6.160506], [106.781748, -6.160327], [106.781305, -6.161063], [106.779654, -6.161413], [106.778748, -6.16241], [106.777748, -6.162308], [106.775736, -6.163506], [106.776798, -6.166456], [106.778192, -6.167506], [106.77937, -6.170506], [106.781852, -6.174506], [106.784304, -6.176506], [106.786748, -6.176419], [106.787748, -6.17674], [106.788748, -6.177715], [106.789974, -6.177732], [106.793748, -6.177014], [106.794748, -6.176051], [106.796139, -6.175897], [106.796748, -6.174647], [106.798748, -6.175042], [106.800809, -6.173506], [106.800614, -6.172372], [106.803075, -6.171833], [106.803748, -6.168411], [106.8043, -6.167506], [106.805921, -6.166506], [106.805991, -6.165264], [106.8047, -6.164554], [106.801748, -6.161436], [106.798748, -6.160752], [106.79752, -6.159735], [106.797045, -6.158506], [106.796242, -6.158012], [106.795748, -6.15667], [106.794633, -6.155622], [106.794552, -6.153702], [106.793748, -6.153418]]], "type": "Polygon"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#d94801", "time": 20}, "type": "Feature"}, {"bbox": [106.779209, -6.175052, 106.802044, -6.156929], "geometry": {"coordinates": [[[106.792748, -6.156929], [106.791748, -6.157003], [106.790748, -6.157987], [106.788748, -6.158187], [106.785987, -6.160506], [106.786222, -6.161506], [106.782748, -6.161791], [106.782092, -6.16285], [106.779209, -6.164506], [106.779586, -6.165668], [106.781336, -6.166919], [106.782835, -6.167419], [106.78197, -6.169506], [106.78494, -6.173506], [106.787748, -6.174027], [106.788748, -6.175052], [106.791091, -6.174506], [106.791748, -6.172954], [106.793509, -6.173267], [106.794748, -6.172419], [106.795748, -6.173132], [106.797448, -6.172206], [106.798909, -6.170506], [106.79871, -6.169468], [106.800867, -6.168625], [106.802044, -6.166506], [106.801953, -6.165301], [106.79869, -6.163565], [106.799006, -6.162506], [106.798155, -6.1621], [106.797748, -6.161173], [106.797036, -6.161794], [106.795919, -6.161506], [106.79371, -6.159544], [106.793846, -6.158506], [106.792748, -6.156929]]], "type": "Polygon"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#fd8d3c", "time": 15}, "type": "Feature"}, {"bbox": [106.783163, -6.171507, 106.798494, -6.160363], "geometry": {"coordinates": [[[106.790748, -6.160363], [106.787748, -6.16246], [106.786381, -6.162506], [106.78524, -6.163998], [106.783877, -6.164635], [106.783163, -6.165506], [106.784748, -6.168949], [106.78619, -6.170065], [106.786816, -6.171438], [106.788748, -6.171507], [106.789414, -6.171172], [106.790656, -6.169414], [106.792245, -6.170009], [106.792748, -6.170648], [106.794829, -6.170587], [106.796975, -6.167733], [106.798494, -6.166506], [106.798243, -6.165506], [106.796256, -6.164506], [106.796178, -6.163506], [106.794689, -6.162506], [106.792748, -6.161941], [106.790748, -6.160363]]], "type": "Polygon"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#fdd0a2", "time": 10}, "type": "Feature"}, {"bbox": [106.786712, -6.168652, 106.794711, -6.163821], "geometry": {"coordinates": [[[106.791748, -6.164142], [106.790748, -6.1651], [106.789748, -6.163821], [106.786712, -6.166506], [106.787748, -6.167903], [106.789748, -6.167993], [106.791894, -6.168652], [106.792544, -6.167302], [106.793748, -6.167378], [106.794711, -6.166506], [106.793748, -6.165059], [106.792748, -6.164941], [106.791748, -6.164142]]], "type": "Polygon"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#fff5eb", "time": 5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_cd7d498a3394530e86dcde88e3e5f500.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["time"];
+    let aliases = ["Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_cd7d498a3394530e86dcde88e3e5f500.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK", "time"];
+    let aliases = ["Nama Terminal:", "Jenis:", "Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_c7d629feee9388e615d74b8ac2f92e1b_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "red", "fillColor": "red", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_c7d629feee9388e615d74b8ac2f92e1b_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_c7d629feee9388e615d74b8ac2f92e1b_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3};
+            
+            let style = geo_json_c7d629feee9388e615d74b8ac2f92e1b_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_c7d629feee9388e615d74b8ac2f92e1b_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_c7d629feee9388e615d74b8ac2f92e1b.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_c7d629feee9388e615d74b8ac2f92e1b_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_c7d629feee9388e615d74b8ac2f92e1b = L.geoJson(null, {
+                onEachFeature: geo_json_c7d629feee9388e615d74b8ac2f92e1b_onEachFeature,
+            
+                style: geo_json_c7d629feee9388e615d74b8ac2f92e1b_styler,
+                pointToLayer: geo_json_c7d629feee9388e615d74b8ac2f92e1b_pointToLayer
+        });
+
+        function geo_json_c7d629feee9388e615d74b8ac2f92e1b_add (data) {
+            geo_json_c7d629feee9388e615d74b8ac2f92e1b
+                .addData(data)
+                .addTo(map_8a4108421c74e26d845809e3e651450e);
+        }
+            geo_json_c7d629feee9388e615d74b8ac2f92e1b_add({"bbox": [106.70546899800007, -6.3094503529999315, 106.95216941200005, -6.109254054999951], "features": [{"bbox": [106.90932678900003, -6.182343801999934, 106.90932678900003, -6.182343801999934], "geometry": {"coordinates": [106.90932678900003, -6.182343801999934], "type": "Point"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pulogadung", "OBJECTID": 1, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.95216941200005, -6.211988460999976, 106.95216941200005, -6.211988460999976], "geometry": {"coordinates": [106.95216941200005, -6.211988460999976], "type": "Point"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pulo Gebang", "OBJECTID": 2, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.88232172300008, -6.3094503529999315, 106.88232172300008, -6.3094503529999315], "geometry": {"coordinates": [106.88232172300008, -6.3094503529999315], "type": "Point"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Kampung Rambutan", "OBJECTID": 3, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.70546899800007, -6.154729599999939, 106.70546899800007, -6.154729599999939], "geometry": {"coordinates": [106.70546899800007, -6.154729599999939], "type": "Point"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Kalideres", "OBJECTID": 4, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.79074815400008, -6.166506244999937, 106.79074815400008, -6.166506244999937], "geometry": {"coordinates": [106.79074815400008, -6.166506244999937], "type": "Point"}, "id": "4", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.88110344900008, -6.109653474999959, 106.88110344900008, -6.109653474999959], "geometry": {"coordinates": [106.88110344900008, -6.109653474999959], "type": "Point"}, "id": "5", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Tanjung Priok", "OBJECTID": 6, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.84232173800007, -6.1738158869999324, 106.84232173800007, -6.1738158869999324], "geometry": {"coordinates": [106.84232173800007, -6.1738158869999324], "type": "Point"}, "id": "6", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.86668721100006, -6.224780333999945, 106.86668721100006, -6.224780333999945], "geometry": {"coordinates": [106.86668721100006, -6.224780333999945], "type": "Point"}, "id": "7", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Kampung Melayu", "OBJECTID": 8, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.80090043400008, -6.243460529999936, 106.80090043400008, -6.243460529999936], "geometry": {"coordinates": [106.80090043400008, -6.243460529999936], "type": "Point"}, "id": "8", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Blok M", "OBJECTID": 9, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.84320063600006, -6.283573930999978, 106.84320063600006, -6.283573930999978], "geometry": {"coordinates": [106.84320063600006, -6.283573930999978], "type": "Point"}, "id": "9", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pasar Minggu", "OBJECTID": 10, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.88576711700006, -6.291344002999949, 106.88576711700006, -6.291344002999949], "geometry": {"coordinates": [106.88576711700006, -6.291344002999949], "type": "Point"}, "id": "10", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pinang Ranti", "OBJECTID": 11, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.93238754900005, -6.221075525999936, 106.93238754900005, -6.221075525999936], "geometry": {"coordinates": [106.93238754900005, -6.221075525999936], "type": "Point"}, "id": "11", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Klender", "OBJECTID": 12, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.77326998800004, -6.109254054999951, 106.77326998800004, -6.109254054999951], "geometry": {"coordinates": [106.77326998800004, -6.109254054999951], "type": "Point"}, "id": "12", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Muara Angke", "OBJECTID": 13, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.72570326700009, -6.159837956999979, 106.72570326700009, -6.159837956999979], "geometry": {"coordinates": [106.72570326700009, -6.159837956999979], "type": "Point"}, "id": "13", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Rawabuaya", "OBJECTID": 14, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.86623394000009, -6.261170341999957, 106.86623394000009, -6.261170341999957], "geometry": {"coordinates": [106.86623394000009, -6.261170341999957], "type": "Point"}, "id": "14", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Cililitan", "OBJECTID": 15, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.84739787800004, -6.20934886799995, 106.84739787800004, -6.20934886799995], "geometry": {"coordinates": [106.84739787800004, -6.20934886799995], "type": "Point"}, "id": "15", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Manggarai", "OBJECTID": 16, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.89125573000007, -6.197775268999976, 106.89125573000007, -6.197775268999976], "geometry": {"coordinates": [106.89125573000007, -6.197775268999976], "type": "Point"}, "id": "16", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Rawamangun", "OBJECTID": 17, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.82022824900008, -6.305532829999947, 106.82022824900008, -6.305532829999947], "geometry": {"coordinates": [106.82022824900008, -6.305532829999947], "type": "Point"}, "id": "17", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Ragunan", "OBJECTID": 18, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_c7d629feee9388e615d74b8ac2f92e1b.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK"];
+    let aliases = ["Nama Terminal:", "Jenis:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            L.Control.geocoder(
+                {"collapsed": false, "defaultMarkGeocode": true, "position": "topright"}
+            ).on('markgeocode', function(e) {
+                map_8a4108421c74e26d845809e3e651450e.setView(e.geocode.center, 11);
+            }).addTo(map_8a4108421c74e26d845809e3e651450e);
+
+        
+    
+            var layer_control_5e9213dd64bb8c1969a987d5bf81b8c5 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_251b0e11fa941f97c9274890c75972e0,
+                },
+                overlays :  {
+                    "Berkendara Motor" : geo_json_cd18130b7f5a8b5d8af9831a84a23a92,
+                    "Bersepeda" : geo_json_b5f4fd699038f332d05381a08c17a4be,
+                    "Berjalan Kaki" : geo_json_cd7d498a3394530e86dcde88e3e5f500,
+                    "Terminal" : geo_json_c7d629feee9388e615d74b8ac2f92e1b,
+                },
+            };
+            L.control.layers(
+                layer_control_5e9213dd64bb8c1969a987d5bf81b8c5.base_layers,
+                layer_control_5e9213dd64bb8c1969a987d5bf81b8c5.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_8a4108421c74e26d845809e3e651450e);
+        
+</script>
+<style>
+    #footer {
+        border-radius: 0px 0px 10px 10px;
+        width: 100%;
+        min-height: 5vh;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        text-align: center;
+        line-height: 25px;
+        position: relative;
+        font: bold 13px 'Outfit';
+        z-index: 5;
+        background-image: url('https://mamedrifqy.github.io/assets/img/background.png');
+    }
+    </style>
+    <footer id="footer">Created Using <a href="https://python-visualization.github.io/folium/" target="_blank">Folium</a> | <a href="https://https://geopandas.org/en/stable/" target="_blank">Geopandas</a> | <a href="https://walker-data.com/mapboxapi/" target="_blank">MapboxAPI</a>
+</html>

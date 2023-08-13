@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2c1d5001c64639e59a064620b69d8de6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+        .maplegend1 {
+          position: absolute;
+          z-index:9999;
+          background-color: rgba(255, 255, 255, .8);
+          border-radius: 5px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          padding: 10px;
+          font: 12px/14px Arial, Helvetica, sans-serif;
+          left: 10px;
+          bottom: 20px;
+        }
+        .maplegend1 .legend-title {
+          text-align: left;
+          margin-bottom: 5px;
+          font-weight: bold;
+          }
+        .maplegend1 .legend-scale ul {
+          margin: 0;
+          margin-bottom: 0px;
+          padding: 0;
+          float: left;
+          list-style: none;
+          }
+        .maplegend1 .legend-scale ul li {
+          list-style: none;
+          margin-left: 0;
+          line-height: 16px;
+          margin-bottom: 2px;
+          }
+        .maplegend1 ul.legend-labels li span {
+          display: block;
+          float: left;
+          height: 14px;
+          width: 14px;
+          margin-right: 5px;
+          margin-left: 0;
+          border: 0px solid #ccc;
+          }
+        .maplegend1 .legend-source {
+          color: #777;
+          clear: both;
+          }
+        .maplegend1 a {
+          color: #777;
+          }
+      </style>
+      
+      
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>$( function() {
+          $( ".maplegend2" ).draggable({
+              start: function (event, ui) {
+                  $(this).css({
+                      right: "auto",
+                      top: "auto",
+                      bottom: "auto"
+                  });
+              }
+          });
+      });
+      </script>
+      <style type='text/css'>
+        .maplegend2 {
+          position: absolute;
+          z-index:9999;
+          background-color: rgba(255, 255, 255, .8);
+          border-radius: 5px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          padding: 10px;
+          font: 12px/14px Arial, Helvetica, sans-serif;
+          right: 10px;
+          bottom: 150px;
+        }
+        .maplegend2 .legend-title {
+          text-align: left;
+          margin-bottom: 5px;
+          font-weight: bold;
+          }
+        .maplegend2 .legend-scale ul {
+          margin: 0;
+          margin-bottom: 0px;
+          padding: 0;
+          float: left;
+          list-style: none;
+          }
+        .maplegend2 .legend-scale ul li {
+          list-style: none;
+          margin-left: 0;
+          line-height: 16px;
+          margin-bottom: 2px;
+          }
+        .maplegend2 ul.legend-labels li span {
+          display: block;
+          float: left;
+          height: 14px;
+          width: 14px;
+          margin-right: 5px;
+          margin-left: 0;
+          border: 0px solid #ccc;
+          }
+        .maplegend2 .legend-source {
+          color: #777;
+          clear: both;
+          }
+        .maplegend2 a {
+          color: #777;
+          }
+      </style>
+      
+      
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>$( function() {
+          $( ".maplegend" ).draggable({
+              start: function (event, ui) {
+                  $(this).css({
+                      right: "auto",
+                      top: "auto",
+                      bottom: "auto"
+                  });
+              }
+          });
+      });
+      </script>
+      <style type='text/css'>
+        .maplegend {
+          position: absolute;
+          z-index:9999;
+          background-color: rgba(255, 255, 255, .8);
+          border-radius: 5px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          padding: 10px;
+          font: 12px/14px Arial, Helvetica, sans-serif;
+          right: 10px;
+          bottom: 20px;
+        }
+        .maplegend .legend-title {
+          text-align: left;
+          margin-bottom: 5px;
+          font-weight: bold;
+          }
+        .maplegend .legend-scale ul {
+          margin: 0;
+          margin-bottom: 0px;
+          padding: 0;
+          float: left;
+          list-style: none;
+          }
+        .maplegend .legend-scale ul li {
+          list-style: none;
+          margin-left: 0;
+          line-height: 16px;
+          margin-bottom: 2px;
+          }
+        .maplegend ul.legend-labels li span {
+          display: block;
+          float: left;
+          height: 14px;
+          width: 14px;
+          margin-right: 5px;
+          margin-left: 0;
+          border: 0px solid #ccc;
+          }
+        .maplegend .legend-source {
+          color: #777;
+          clear: both;
+          }
+        .maplegend a {
+          color: #777;
+          }
+      </style>
+      
+  </head>
+  <body>
+      
+      
+      <div id='maplegend1 time' class='maplegend1'>
+          <div class='legend-title'>Berkendara Motor</div>
+          <div class='legend-scale'>
+              <ul class='legend-labels'>
+                  <li><span style='background:#f7fbff'></span> 0-5 Menit</li>
+                  <li><span style='background:#abd0e6'></span> 5-10 Menit</li>
+                  <li><span style='background:#3787c0'></span>10-15 Menit</li>
+                  <li><span style='background:#08306b'></span>15-20 Menit</li>
+              </ul>
+          </div>
+      </div>
+      
+      
+      <div id='maplegend2 time' class='maplegend2'>
+          <div class='legend-title'>Bersepeda</div>
+          <div class='legend-scale'>
+              <ul class='legend-labels'>
+                  <li><span style='background:#f7fcf5'></span> 0-5 Menit</li>
+                  <li><span style='background:#aedea7'></span> 5-10 Menit</li>
+                  <li><span style='background:#37a055'></span>10-15 Menit</li>
+                  <li><span style='background:#00441b'></span>15-20 Menit</li>
+              </ul>
+          </div>
+      </div>
+      
+      
+      <div id='maplegend time' class='maplegend'>
+          <div class='legend-title'>Berjalan Kaki</div>
+          <div class='legend-scale'>
+              <ul class='legend-labels'>
+                  <li><span style='background:#fff5eb'></span> 0-5 Menit</li>
+                  <li><span style='background:#fdb97d'></span> 5-10 Menit</li>
+                  <li><span style='background:#e95e0d'></span>10-15 Menit</li>
+                  <li><span style='background:#7f2704'></span>15-20 Menit</li>
+              </ul>
+          </div>
+      </div>
+    
+    
+            <link href="https://fonts.googleapis.com/css?family=Outfit:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i | Montserrat: 300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+             <style>
+    #header {
+        border-radius: opx;
+            margin: auto;
+            width: 100%;
+            position: static;
+            z-index: 5;
+            font: bold 30px 'Outfit';
+            text-align: center;
+            color: black;
+            background-image: url('https://mamedrifqy.github.io/assets/img/background.png');
+            background-blend-mode: overlay;
+    }
+            </style>
+            
+            <header id="header">Peta <i>Isochrone</i> Terminal Senen</header>
+
+            
+        
+            
+             
+    
+            <div class="folium-map" id="map_2c1d5001c64639e59a064620b69d8de6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2c1d5001c64639e59a064620b69d8de6 = L.map(
+                "map_2c1d5001c64639e59a064620b69d8de6",
+                {
+                    center: [-6.174132, 106.83964499999999],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_2c1d5001c64639e59a064620b69d8de6);
+
+            
+
+        
+    
+            var tile_layer_c4564e0a7c484dc9286de84e136698fb = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e, Created by \u003ca target=\"_blank\" href=\"http://mamedrifqy.github.io\"\u003eMuhammad Rifqy\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_2c1d5001c64639e59a064620b69d8de6);
+        
+    
+            map_2c1d5001c64639e59a064620b69d8de6.fitBounds(
+                [[-6.238462, 106.767913], [-6.109802, 106.911377]],
+                {}
+            );
+        
+    
+        function geo_json_e72c7af9f4af8d9d0cbf87262f644e27_styler(feature) {
+            switch(feature.id) {
+                case "3": 
+                    return {"color": "black", "fillColor": "#2171b5", "fillOpacity": 0.5, "weight": 2};
+                case "2": 
+                    return {"color": "black", "fillColor": "#6baed6", "fillOpacity": 0.5, "weight": 2};
+                case "1": 
+                    return {"color": "black", "fillColor": "#c6dbef", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "black", "fillColor": "#f7fbff", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_e72c7af9f4af8d9d0cbf87262f644e27_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_e72c7af9f4af8d9d0cbf87262f644e27_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_e72c7af9f4af8d9d0cbf87262f644e27_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_e72c7af9f4af8d9d0cbf87262f644e27_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_e72c7af9f4af8d9d0cbf87262f644e27.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_e72c7af9f4af8d9d0cbf87262f644e27_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_e72c7af9f4af8d9d0cbf87262f644e27 = L.geoJson(null, {
+                onEachFeature: geo_json_e72c7af9f4af8d9d0cbf87262f644e27_onEachFeature,
+            
+                style: geo_json_e72c7af9f4af8d9d0cbf87262f644e27_styler,
+                pointToLayer: geo_json_e72c7af9f4af8d9d0cbf87262f644e27_pointToLayer
+        });
+
+        function geo_json_e72c7af9f4af8d9d0cbf87262f644e27_add (data) {
+            geo_json_e72c7af9f4af8d9d0cbf87262f644e27
+                .addData(data)
+                .addTo(map_2c1d5001c64639e59a064620b69d8de6);
+        }
+            geo_json_e72c7af9f4af8d9d0cbf87262f644e27_add({"bbox": [106.767913, -6.238462, 106.911377, -6.109802], "features": [{"bbox": [106.767913, -6.238462, 106.911377, -6.109802], "geometry": {"coordinates": [[[106.878322, -6.109802], [106.877566, -6.11106], [106.874322, -6.11122], [106.873, -6.112494], [106.868322, -6.113198], [106.866322, -6.116042], [106.860322, -6.11361], [106.860074, -6.116064], [106.860851, -6.117816], [106.860322, -6.118307], [106.857743, -6.118395], [106.854322, -6.117072], [106.852729, -6.118223], [106.848322, -6.118356], [106.846579, -6.120073], [106.843077, -6.120571], [106.842322, -6.122304], [106.838322, -6.121183], [106.836322, -6.126097], [106.833033, -6.123816], [106.832322, -6.121919], [106.830322, -6.12069], [106.828603, -6.122098], [106.826043, -6.122094], [106.825706, -6.119816], [106.826869, -6.118364], [106.826728, -6.11741], [106.824322, -6.116181], [106.821749, -6.116389], [106.820322, -6.115079], [106.818322, -6.119744], [106.816322, -6.120886], [106.814322, -6.120516], [106.811598, -6.121816], [106.81074, -6.124234], [106.80885, -6.126344], [106.804322, -6.124888], [106.800322, -6.125044], [106.798421, -6.125816], [106.796844, -6.127816], [106.798936, -6.129816], [106.79513, -6.130624], [106.784322, -6.131189], [106.782606, -6.129531], [106.780898, -6.12924], [106.780527, -6.127611], [106.778955, -6.127183], [106.778494, -6.125643], [106.776764, -6.125374], [106.776362, -6.121776], [106.772503, -6.121816], [106.77276, -6.123816], [106.776112, -6.124025], [106.776221, -6.125917], [106.777933, -6.126204], [106.778142, -6.127996], [106.779562, -6.128575], [106.781956, -6.132181], [106.785146, -6.132991], [106.785745, -6.139816], [106.78731, -6.140828], [106.787457, -6.143816], [106.789259, -6.144878], [106.790139, -6.147816], [106.79212, -6.148018], [106.792322, -6.150568], [106.796475, -6.145662], [106.798597, -6.149541], [106.800179, -6.149958], [106.799856, -6.151816], [106.801238, -6.153816], [106.800322, -6.157439], [106.797492, -6.156646], [106.796322, -6.15383], [106.794258, -6.159816], [106.790322, -6.160381], [106.788322, -6.161697], [106.787074, -6.161064], [106.786322, -6.15899], [106.784322, -6.158908], [106.780322, -6.161541], [106.777819, -6.161313], [106.776322, -6.16224], [106.774987, -6.16115], [106.772322, -6.161188], [106.770445, -6.159693], [106.768537, -6.159601], [106.768322, -6.158387], [106.767913, -6.162225], [106.77036, -6.163778], [106.771271, -6.165816], [106.777278, -6.16686], [106.778232, -6.171905], [106.780322, -6.174471], [106.782322, -6.174787], [106.788568, -6.181816], [106.786316, -6.183816], [106.778322, -6.18511], [106.777279, -6.186773], [106.774322, -6.187359], [106.773788, -6.18835], [106.778764, -6.188258], [106.780322, -6.186768], [106.790322, -6.187263], [106.792603, -6.186097], [106.794322, -6.182898], [106.795222, -6.183816], [106.794969, -6.188463], [106.786322, -6.188642], [106.785675, -6.190462], [106.786322, -6.191775], [106.788873, -6.191264], [106.792322, -6.195318], [106.794322, -6.193246], [106.796476, -6.193661], [106.796383, -6.199816], [106.799433, -6.203816], [106.799282, -6.205816], [106.80142, -6.206717], [106.802145, -6.207992], [106.803961, -6.208177], [106.804322, -6.209986], [106.806111, -6.210027], [106.806322, -6.211824], [106.806507, -6.209816], [106.804898, -6.20924], [106.804773, -6.207365], [106.803378, -6.205816], [106.803405, -6.203816], [106.802478, -6.203659], [106.801964, -6.202173], [106.803062, -6.199076], [106.802587, -6.198081], [106.806322, -6.196525], [106.808826, -6.199312], [106.808717, -6.200211], [106.805763, -6.201257], [106.805759, -6.203253], [106.804777, -6.203816], [106.805785, -6.204352], [106.808322, -6.204568], [106.809863, -6.203357], [106.812322, -6.203001], [106.814233, -6.203816], [106.813389, -6.205816], [106.817129, -6.209009], [106.817821, -6.211816], [106.815288, -6.216782], [106.811369, -6.219816], [106.811903, -6.220235], [106.814322, -6.220803], [106.818322, -6.219125], [106.820322, -6.220913], [106.821983, -6.217477], [106.824322, -6.215065], [106.826542, -6.214036], [106.828322, -6.210529], [106.82977, -6.219816], [106.83186, -6.221816], [106.832322, -6.223953], [106.834381, -6.219816], [106.833548, -6.217816], [106.834322, -6.216212], [106.836322, -6.216668], [106.838322, -6.21905], [106.840813, -6.218307], [106.84169, -6.217184], [106.842784, -6.217353], [106.843367, -6.22077], [106.844732, -6.221816], [106.84435, -6.223816], [106.845198, -6.225816], [106.844322, -6.233313], [106.846322, -6.233073], [106.847951, -6.231445], [106.850837, -6.230332], [106.853156, -6.226982], [106.852322, -6.227144], [106.852322, -6.22559], [106.853343, -6.226795], [106.864322, -6.22628], [106.865913, -6.231816], [106.867385, -6.232753], [106.868322, -6.234917], [106.872322, -6.228065], [106.87504, -6.229097], [106.876101, -6.235816], [106.877899, -6.236238], [106.878322, -6.238462], [106.879365, -6.231816], [106.877821, -6.229816], [106.879145, -6.224639], [106.878283, -6.217816], [106.880322, -6.217217], [106.882322, -6.218117], [106.88401, -6.215504], [106.88541, -6.214904], [106.893185, -6.213816], [106.890884, -6.213254], [106.890322, -6.211614], [106.888969, -6.211169], [106.887014, -6.212508], [106.884322, -6.212949], [106.878908, -6.211816], [106.881019, -6.208513], [106.881737, -6.205231], [106.884322, -6.202291], [106.88549, -6.202647], [106.886322, -6.204645], [106.887006, -6.2025], [106.890852, -6.200346], [106.893552, -6.199816], [106.89366, -6.195816], [106.894322, -6.195181], [106.903644, -6.193816], [106.900999, -6.191816], [106.895095, -6.191043], [106.892767, -6.18737], [106.893366, -6.18486], [106.896125, -6.183619], [106.900322, -6.179455], [106.901511, -6.180627], [106.905095, -6.181043], [106.906322, -6.182171], [106.911377, -6.181816], [106.904322, -6.174947], [106.9027, -6.176194], [106.900322, -6.175116], [106.899945, -6.17144], [106.900922, -6.170416], [106.901784, -6.165816], [106.900483, -6.161816], [106.899266, -6.16476], [106.897523, -6.165017], [106.896322, -6.166325], [106.895333, -6.165816], [106.89632, -6.163816], [106.895687, -6.159181], [106.897205, -6.157816], [106.897029, -6.155816], [106.893489, -6.152649], [106.892618, -6.148112], [106.894322, -6.1466], [106.897546, -6.145816], [106.894735, -6.145402], [106.894522, -6.143615], [106.892838, -6.143299], [106.891809, -6.141816], [106.893588, -6.139816], [106.894822, -6.129816], [106.894626, -6.121512], [106.892675, -6.119816], [106.892322, -6.118035], [106.891055, -6.12455], [106.890322, -6.126235], [106.889034, -6.126528], [106.886322, -6.126714], [106.884322, -6.124777], [106.876322, -6.124694], [106.874322, -6.12246], [106.86601, -6.121816], [106.869223, -6.120717], [106.872322, -6.118191], [106.876978, -6.112472], [106.878437, -6.111931], [106.878322, -6.109802]]], "type": "Polygon"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#2171b5", "time": 20}, "type": "Feature"}, {"bbox": [106.789144, -6.216693, 106.886262, -6.122003], "geometry": {"coordinates": [[[106.856322, -6.123718], [106.849542, -6.123037], [106.848326, -6.123812], [106.847848, -6.12229], [106.846322, -6.122003], [106.842322, -6.12708], [106.832322, -6.126537], [106.828322, -6.123734], [106.824346, -6.125816], [106.821531, -6.130606], [106.821767, -6.131816], [106.824114, -6.132023], [106.825467, -6.133816], [106.818184, -6.135678], [106.816322, -6.136886], [106.813357, -6.136781], [106.812322, -6.13454], [106.810148, -6.137816], [106.806178, -6.139673], [106.806322, -6.142133], [106.807654, -6.141148], [106.810322, -6.140778], [106.812532, -6.141816], [106.811866, -6.145816], [106.812998, -6.149139], [106.811443, -6.152937], [106.808096, -6.155591], [106.805162, -6.160656], [106.804322, -6.161236], [106.802322, -6.159567], [106.801056, -6.164551], [106.790322, -6.165647], [106.790133, -6.167627], [106.789144, -6.167816], [106.793851, -6.168286], [106.796493, -6.169987], [106.800592, -6.167546], [106.801237, -6.173816], [106.795602, -6.179097], [106.795101, -6.179816], [106.795636, -6.180502], [106.796322, -6.181049], [106.800322, -6.179105], [106.802322, -6.182466], [106.803808, -6.181302], [106.804056, -6.17955], [106.806322, -6.178729], [106.809072, -6.179065], [106.810203, -6.181935], [106.810092, -6.183816], [106.809928, -6.185423], [106.80814, -6.185816], [106.808228, -6.187816], [106.808456, -6.187816], [106.809887, -6.187381], [106.812322, -6.187016], [106.813737, -6.1904], [106.814322, -6.195053], [106.81666, -6.193816], [106.817504, -6.190998], [106.820322, -6.18856], [106.822322, -6.19969], [106.826322, -6.198311], [106.830322, -6.199128], [106.832322, -6.202203], [106.834322, -6.20159], [106.835381, -6.202756], [106.838855, -6.203283], [106.840322, -6.207679], [106.843403, -6.208735], [106.844322, -6.215374], [106.850941, -6.211197], [106.852996, -6.211816], [106.852294, -6.213844], [106.854322, -6.215655], [106.856322, -6.215648], [106.858322, -6.214486], [106.860322, -6.215079], [106.862322, -6.214475], [106.864322, -6.216395], [106.866322, -6.216693], [106.86699, -6.215816], [106.865978, -6.213816], [106.863768, -6.212369], [106.863394, -6.210744], [106.863634, -6.209128], [106.865793, -6.207816], [106.864396, -6.205816], [106.861743, -6.204394], [106.861641, -6.201816], [106.85998, -6.199816], [106.860016, -6.197816], [106.867082, -6.193816], [106.872322, -6.192571], [106.874322, -6.193444], [106.876322, -6.192146], [106.87935, -6.191816], [106.87528, -6.189816], [106.875715, -6.187816], [106.872322, -6.187382], [106.870322, -6.185587], [106.868322, -6.185628], [106.865203, -6.183816], [106.864499, -6.179993], [106.868322, -6.180314], [106.868322, -6.179673], [106.867464, -6.178674], [106.867622, -6.177116], [106.869191, -6.175816], [106.869919, -6.173414], [106.873892, -6.171816], [106.873567, -6.169816], [106.876322, -6.166579], [106.878174, -6.167816], [106.878322, -6.169816], [106.879337, -6.168831], [106.882322, -6.168207], [106.883835, -6.168303], [106.884322, -6.169987], [106.886262, -6.169816], [106.884754, -6.169383], [106.884322, -6.167555], [106.880974, -6.167164], [106.880856, -6.163816], [106.882793, -6.161816], [106.882913, -6.160408], [106.884475, -6.159816], [106.884322, -6.157029], [106.878322, -6.162747], [106.873391, -6.158747], [106.870951, -6.153186], [106.869422, -6.151816], [106.869594, -6.147089], [106.881302, -6.145816], [106.882231, -6.143816], [106.878903, -6.143234], [106.876326, -6.141812], [106.874322, -6.142631], [106.870322, -6.141702], [106.868476, -6.139816], [106.869718, -6.137816], [106.866322, -6.134041], [106.864322, -6.136183], [106.858322, -6.133709], [106.856999, -6.131139], [106.855238, -6.129816], [106.856996, -6.127816], [106.857256, -6.125816], [106.856322, -6.123718]]], "type": "Polygon"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#6baed6", "time": 15}, "type": "Feature"}, {"bbox": [106.813846, -6.199933, 106.860653, -6.136894], "geometry": {"coordinates": [[[106.832322, -6.136894], [106.831284, -6.140779], [106.825467, -6.141816], [106.827269, -6.142868], [106.827687, -6.14445], [106.829307, -6.145816], [106.828322, -6.14654], [106.826322, -6.145456], [106.823991, -6.148147], [106.824215, -6.149816], [106.826322, -6.151787], [106.828322, -6.151319], [106.830645, -6.153493], [106.830639, -6.155816], [106.828322, -6.158251], [106.826322, -6.154784], [106.824811, -6.158305], [106.818322, -6.159174], [106.817881, -6.160257], [106.818913, -6.161816], [106.815749, -6.165816], [106.818322, -6.166513], [106.818782, -6.168276], [106.813846, -6.169816], [106.814664, -6.171816], [106.816322, -6.1728], [106.817784, -6.171278], [106.819362, -6.171816], [106.819011, -6.175816], [106.822322, -6.181822], [106.825007, -6.179816], [106.823497, -6.17864], [106.82356, -6.173816], [106.824322, -6.173216], [106.826709, -6.173429], [106.828666, -6.175471], [106.829251, -6.178886], [106.830657, -6.17948], [106.831754, -6.182384], [106.834008, -6.183816], [106.834322, -6.185709], [106.836441, -6.185816], [106.835743, -6.187237], [106.836322, -6.18848], [106.839277, -6.189816], [106.840132, -6.193816], [106.846322, -6.193646], [106.846436, -6.195702], [106.84936, -6.196777], [106.850322, -6.19855], [106.854438, -6.199933], [106.85497, -6.197816], [106.853893, -6.195816], [106.855803, -6.193816], [106.855747, -6.192391], [106.854322, -6.191264], [106.852322, -6.191048], [106.851494, -6.189816], [106.85178, -6.187274], [106.854374, -6.185816], [106.854039, -6.184099], [106.852322, -6.182461], [106.850322, -6.182276], [106.848039, -6.179533], [106.848322, -6.177887], [106.850322, -6.177171], [106.852322, -6.174691], [106.860549, -6.173816], [106.860322, -6.172434], [106.859926, -6.17342], [106.855611, -6.172527], [106.852406, -6.167816], [106.853659, -6.165816], [106.853918, -6.159816], [106.852989, -6.157149], [106.851853, -6.156285], [106.851512, -6.153816], [106.852322, -6.15292], [106.856322, -6.152621], [106.858322, -6.154065], [106.860653, -6.153816], [106.858322, -6.149098], [106.854322, -6.14903], [106.849455, -6.146683], [106.848322, -6.141985], [106.847433, -6.148928], [106.844739, -6.150233], [106.841927, -6.150211], [106.839463, -6.146675], [106.837824, -6.145816], [106.834322, -6.139823], [106.832662, -6.139475], [106.832322, -6.136894]]], "type": "Polygon"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#c6dbef", "time": 10}, "type": "Feature"}, {"bbox": [106.831662, -6.183905, 106.846633, -6.155842], "geometry": {"coordinates": [[[106.840322, -6.155842], [106.836993, -6.157816], [106.836908, -6.162402], [106.835383, -6.164877], [106.833616, -6.165816], [106.831662, -6.169816], [106.832475, -6.171663], [106.834322, -6.171503], [106.835617, -6.169111], [106.838799, -6.169339], [106.839996, -6.175816], [106.841706, -6.177816], [106.842411, -6.183905], [106.846322, -6.18259], [106.846633, -6.177505], [106.844002, -6.171816], [106.843339, -6.161816], [106.841217, -6.159816], [106.840322, -6.155842]]], "type": "Polygon"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#f7fbff", "time": 5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e72c7af9f4af8d9d0cbf87262f644e27.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["time"];
+    let aliases = ["Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_e72c7af9f4af8d9d0cbf87262f644e27.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK", "time"];
+    let aliases = ["Nama Terminal:", "Jenis:", "Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_67d138d9b18be212d6791c3db9d0cab0_styler(feature) {
+            switch(feature.id) {
+                case "3": 
+                    return {"color": "black", "fillColor": "#238b45", "fillOpacity": 0.5, "weight": 2};
+                case "2": 
+                    return {"color": "black", "fillColor": "#74c476", "fillOpacity": 0.5, "weight": 2};
+                case "1": 
+                    return {"color": "black", "fillColor": "#c7e9c0", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "black", "fillColor": "#f7fcf5", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_67d138d9b18be212d6791c3db9d0cab0_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_67d138d9b18be212d6791c3db9d0cab0_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_67d138d9b18be212d6791c3db9d0cab0_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_67d138d9b18be212d6791c3db9d0cab0_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_67d138d9b18be212d6791c3db9d0cab0.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_67d138d9b18be212d6791c3db9d0cab0_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_67d138d9b18be212d6791c3db9d0cab0 = L.geoJson(null, {
+                onEachFeature: geo_json_67d138d9b18be212d6791c3db9d0cab0_onEachFeature,
+            
+                style: geo_json_67d138d9b18be212d6791c3db9d0cab0_styler,
+                pointToLayer: geo_json_67d138d9b18be212d6791c3db9d0cab0_pointToLayer
+        });
+
+        function geo_json_67d138d9b18be212d6791c3db9d0cab0_add (data) {
+            geo_json_67d138d9b18be212d6791c3db9d0cab0
+                .addData(data)
+                .addTo(map_2c1d5001c64639e59a064620b69d8de6);
+        }
+            geo_json_67d138d9b18be212d6791c3db9d0cab0_add({"bbox": [106.801305, -6.21577, 106.883151, -6.1303], "features": [{"bbox": [106.801305, -6.21577, 106.883151, -6.1303], "geometry": {"coordinates": [[[106.846322, -6.130466], [106.845322, -6.132964], [106.843322, -6.13335], [106.842322, -6.132291], [106.83946, -6.133954], [106.838322, -6.134132], [106.837649, -6.134816], [106.838802, -6.137816], [106.83846, -6.137954], [106.838322, -6.139959], [106.837322, -6.139703], [106.836575, -6.137563], [106.833322, -6.137784], [106.832852, -6.136816], [106.832966, -6.133816], [106.834075, -6.132816], [106.832965, -6.132172], [106.831322, -6.1303], [106.830619, -6.130816], [106.830167, -6.133816], [106.829322, -6.135457], [106.825322, -6.135422], [106.824097, -6.136591], [106.82251, -6.137004], [106.822322, -6.138207], [106.821426, -6.137712], [106.820322, -6.137679], [106.820092, -6.138816], [106.819322, -6.139437], [106.817712, -6.137816], [106.816147, -6.137816], [106.817684, -6.139816], [106.817238, -6.140733], [106.81728, -6.141816], [106.817894, -6.142244], [106.81816, -6.144816], [106.819495, -6.145643], [106.819322, -6.146855], [106.817643, -6.147816], [106.818109, -6.148028], [106.817767, -6.149262], [106.816742, -6.149395], [106.816322, -6.148706], [106.815797, -6.149816], [106.81655, -6.150587], [106.816359, -6.152816], [106.816937, -6.153816], [106.815322, -6.154065], [106.814322, -6.15324], [106.813322, -6.154398], [106.811284, -6.154778], [106.810543, -6.158816], [106.812087, -6.159816], [106.810978, -6.160159], [106.810322, -6.159354], [106.808773, -6.160816], [106.808673, -6.161816], [106.807621, -6.162816], [106.807449, -6.163689], [106.808277, -6.164816], [106.803876, -6.165816], [106.804973, -6.166165], [106.805322, -6.167466], [106.805956, -6.167816], [106.805275, -6.168863], [106.805816, -6.17031], [106.804322, -6.170566], [106.804271, -6.170866], [106.804977, -6.17116], [106.804704, -6.172816], [106.803627, -6.174121], [106.802322, -6.174517], [106.802169, -6.175663], [106.801305, -6.175799], [106.801322, -6.176302], [106.803322, -6.175929], [106.804322, -6.176186], [106.805347, -6.174816], [106.806497, -6.174641], [106.807079, -6.176058], [106.808803, -6.177335], [106.809322, -6.178633], [106.810184, -6.178954], [106.810322, -6.179423], [106.811322, -6.179167], [106.811587, -6.179551], [106.812534, -6.179604], [106.812864, -6.182273], [106.81321, -6.182928], [106.814214, -6.182924], [106.814054, -6.184816], [106.814916, -6.185222], [106.815322, -6.185953], [106.817322, -6.183027], [106.818322, -6.183661], [106.820322, -6.183716], [106.820868, -6.182816], [106.81908, -6.182057], [106.819322, -6.181566], [106.822483, -6.181655], [106.823322, -6.185073], [106.825322, -6.183072], [106.829322, -6.182309], [106.830322, -6.18144], [106.831322, -6.181667], [106.831027, -6.183521], [106.829322, -6.184614], [106.827533, -6.185027], [106.827368, -6.185862], [106.825107, -6.186601], [106.823322, -6.186478], [106.822839, -6.186816], [106.823322, -6.18751], [106.823482, -6.186976], [106.824917, -6.187221], [106.825322, -6.189044], [106.825761, -6.188255], [106.827322, -6.188308], [106.828322, -6.187519], [106.829476, -6.188816], [106.829328, -6.189822], [106.828506, -6.19], [106.828608, -6.191102], [106.826901, -6.191395], [106.826534, -6.192028], [106.825659, -6.192154], [106.824515, -6.193009], [106.824069, -6.194563], [106.824761, -6.195816], [106.824322, -6.196825], [106.825322, -6.196909], [106.82612, -6.195816], [106.827457, -6.195681], [106.827504, -6.199634], [106.828023, -6.200114], [106.828322, -6.20143], [106.829322, -6.200522], [106.830866, -6.201272], [106.831044, -6.203538], [106.830322, -6.203916], [106.831983, -6.204155], [106.834322, -6.205462], [106.835369, -6.204863], [106.83647, -6.204816], [106.836564, -6.203816], [106.837003, -6.203497], [106.838582, -6.203556], [106.839083, -6.206055], [106.840322, -6.20621], [106.842176, -6.207962], [106.844112, -6.208026], [106.844376, -6.20887], [106.845322, -6.209106], [106.846322, -6.208838], [106.846605, -6.211099], [106.84514, -6.212816], [106.845948, -6.21319], [106.846322, -6.214198], [106.848322, -6.21577], [106.848601, -6.214095], [106.849505, -6.213816], [106.849982, -6.210816], [106.850322, -6.210524], [106.850911, -6.211227], [106.851764, -6.211374], [106.853322, -6.213275], [106.854434, -6.212704], [106.857322, -6.21433], [106.862322, -6.214259], [106.863322, -6.214716], [106.864047, -6.214541], [106.864226, -6.213816], [106.863322, -6.213178], [106.862064, -6.213073], [106.862322, -6.210411], [106.862586, -6.209816], [106.865237, -6.207816], [106.864494, -6.206816], [106.862618, -6.205519], [106.862059, -6.203816], [106.861012, -6.202816], [106.860861, -6.199816], [106.859964, -6.198816], [106.860223, -6.195816], [106.862269, -6.195763], [106.865227, -6.193721], [106.867322, -6.19342], [106.868322, -6.192225], [106.87148, -6.191816], [106.870476, -6.190816], [106.872049, -6.188816], [106.871322, -6.188631], [106.870747, -6.187816], [106.871322, -6.187169], [106.872551, -6.187045], [106.872681, -6.186457], [106.872404, -6.185734], [106.869906, -6.183232], [106.869673, -6.181464], [106.869035, -6.180103], [106.868317, -6.179811], [106.869731, -6.177225], [106.871108, -6.175816], [106.869774, -6.174816], [106.869983, -6.174477], [106.872601, -6.174537], [106.873322, -6.175161], [106.874227, -6.173721], [106.875322, -6.173358], [106.875414, -6.171724], [106.8737, -6.168438], [106.873877, -6.167371], [106.876508, -6.167002], [106.877322, -6.166068], [106.87796, -6.166178], [106.878841, -6.167297], [106.880322, -6.167342], [106.881322, -6.167899], [106.883151, -6.167816], [106.881806, -6.167332], [106.880604, -6.165816], [106.880421, -6.162916], [106.881322, -6.162622], [106.880116, -6.162816], [106.8799, -6.163816], [106.879322, -6.16425], [106.876455, -6.163816], [106.876808, -6.162816], [106.875092, -6.157046], [106.875305, -6.155833], [106.874322, -6.155455], [106.873876, -6.154816], [106.873518, -6.152816], [106.872744, -6.152393], [106.872442, -6.151696], [106.872375, -6.14987], [106.872811, -6.149816], [106.871322, -6.149721], [106.869322, -6.147705], [106.868097, -6.148591], [106.866756, -6.148382], [106.866307, -6.146816], [106.864032, -6.146105], [106.863827, -6.144816], [106.863064, -6.144073], [106.861322, -6.143962], [106.860322, -6.143405], [106.859436, -6.141816], [106.857322, -6.139919], [106.856322, -6.139616], [106.855322, -6.140251], [106.85275, -6.139245], [106.852322, -6.139336], [106.851904, -6.140398], [106.850564, -6.140816], [106.850322, -6.141292], [106.849322, -6.140586], [106.848686, -6.137816], [106.847692, -6.136816], [106.847512, -6.133625], [106.84656, -6.132816], [106.846322, -6.130466]]], "type": "Polygon"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#238b45", "time": 20}, "type": "Feature"}, {"bbox": [106.812935, -6.203587, 106.870633, -6.141526], "geometry": {"coordinates": [[[106.834322, -6.141526], [106.831322, -6.141732], [106.831081, -6.142575], [106.830322, -6.14265], [106.828407, -6.142731], [106.828241, -6.141816], [106.828189, -6.142948], [106.829699, -6.145438], [106.829687, -6.146182], [106.829322, -6.14672], [106.828322, -6.146654], [106.827322, -6.147116], [106.826322, -6.146172], [106.825335, -6.147829], [106.82419, -6.148816], [106.825322, -6.149733], [106.826423, -6.149714], [106.827303, -6.150816], [106.827311, -6.151816], [106.825994, -6.152816], [106.826501, -6.153816], [106.824414, -6.154908], [106.823322, -6.156069], [106.822322, -6.155806], [106.820649, -6.158143], [106.819005, -6.158499], [106.818575, -6.159816], [106.818749, -6.161243], [106.817632, -6.163126], [106.816322, -6.163997], [106.81579, -6.165284], [106.815071, -6.165816], [106.815322, -6.166139], [106.816322, -6.16607], [106.817322, -6.167524], [106.819322, -6.167352], [106.819531, -6.168025], [106.818322, -6.168946], [106.817202, -6.168936], [106.815322, -6.167656], [106.814322, -6.168838], [106.813796, -6.17029], [106.812935, -6.170816], [106.816322, -6.173172], [106.817971, -6.171465], [106.818615, -6.171523], [106.818727, -6.172222], [106.818237, -6.172731], [106.818578, -6.173559], [106.821057, -6.175081], [106.822322, -6.174424], [106.823159, -6.175979], [106.823322, -6.177401], [106.824058, -6.173552], [106.824643, -6.173494], [106.825322, -6.174258], [106.826322, -6.174186], [106.826692, -6.173816], [106.825815, -6.172816], [106.82845, -6.172687], [106.827624, -6.173816], [106.827857, -6.174281], [106.829451, -6.174687], [106.829725, -6.176412], [106.830549, -6.176816], [106.830213, -6.178816], [106.830464, -6.179816], [106.830196, -6.18069], [106.829374, -6.180816], [106.831189, -6.180948], [106.832322, -6.183196], [106.833487, -6.183651], [106.834826, -6.185816], [106.833139, -6.186633], [106.8312, -6.188694], [106.831164, -6.189658], [106.830502, -6.189816], [106.830905, -6.190233], [106.832322, -6.190347], [106.833322, -6.191339], [106.834322, -6.190816], [106.834516, -6.191622], [106.836529, -6.191816], [106.836847, -6.19329], [106.83759, -6.193816], [106.837836, -6.195816], [106.837322, -6.19635], [106.836322, -6.196261], [106.83597, -6.196816], [106.836984, -6.197153], [106.837096, -6.198816], [106.838322, -6.199765], [106.840322, -6.200282], [106.841322, -6.199451], [106.842322, -6.200811], [106.843107, -6.200601], [106.843024, -6.197518], [106.844242, -6.196736], [106.846322, -6.19687], [106.847322, -6.195381], [106.847988, -6.19615], [106.849633, -6.196505], [106.850059, -6.197816], [106.850163, -6.202657], [106.848977, -6.202816], [106.849322, -6.203224], [106.850322, -6.203543], [106.851725, -6.203219], [106.854183, -6.201816], [106.854322, -6.200656], [106.85478, -6.201358], [106.855809, -6.201816], [106.857205, -6.201932], [106.857322, -6.203587], [106.857978, -6.202816], [106.858155, -6.201816], [106.85694, -6.201198], [106.856633, -6.199816], [106.857404, -6.198816], [106.857509, -6.197816], [106.85688, -6.197258], [106.853322, -6.197002], [106.853154, -6.196648], [106.853322, -6.195504], [106.854322, -6.196224], [106.856322, -6.195973], [106.857322, -6.196412], [106.858926, -6.195816], [106.8581, -6.195038], [106.858132, -6.194626], [106.860107, -6.191601], [106.860862, -6.188816], [106.860322, -6.18868], [106.859824, -6.187816], [106.860322, -6.18729], [106.861322, -6.187685], [106.862405, -6.186816], [106.862046, -6.183816], [106.863471, -6.180816], [106.861893, -6.179245], [106.860434, -6.178703], [106.859322, -6.177715], [106.859106, -6.1766], [106.859968, -6.175816], [106.85945, -6.174816], [106.860984, -6.174478], [106.861322, -6.173596], [106.862964, -6.173458], [106.863381, -6.172875], [106.865461, -6.171956], [106.86689, -6.170384], [106.868491, -6.169985], [106.868835, -6.169329], [106.870633, -6.168816], [106.870574, -6.168564], [106.869032, -6.166816], [106.86854, -6.164597], [106.867234, -6.162816], [106.866272, -6.159866], [106.865322, -6.159482], [106.865132, -6.158626], [106.865699, -6.158193], [106.865916, -6.156816], [106.865029, -6.155816], [106.863074, -6.155064], [106.861375, -6.153816], [106.86131, -6.152827], [106.859656, -6.151816], [106.858322, -6.151646], [106.857322, -6.150348], [106.85616, -6.150978], [106.853025, -6.150113], [106.852322, -6.148878], [106.851322, -6.14928], [106.849869, -6.147816], [106.849538, -6.144816], [106.848424, -6.144713], [106.848322, -6.144247], [106.848255, -6.144883], [106.848776, -6.145816], [106.846705, -6.149199], [106.844322, -6.15029], [106.843582, -6.151076], [106.843134, -6.151004], [106.842903, -6.150234], [106.84054, -6.148598], [106.840823, -6.146816], [106.838432, -6.145705], [106.838123, -6.144015], [106.837322, -6.144047], [106.835881, -6.143256], [106.834322, -6.141526]]], "type": "Polygon"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#74c476", "time": 15}, "type": "Feature"}, {"bbox": [106.825297, -6.193127, 106.85978, -6.149368], "geometry": {"coordinates": [[[106.838322, -6.149368], [106.837642, -6.151136], [106.836985, -6.151479], [106.836322, -6.152607], [106.835322, -6.151611], [106.835035, -6.153816], [106.835667, -6.154816], [106.835442, -6.156816], [106.835801, -6.158816], [106.834322, -6.15919], [106.833636, -6.160131], [106.831971, -6.160465], [106.831612, -6.161106], [106.830232, -6.161726], [106.830322, -6.162287], [106.831614, -6.162523], [106.832322, -6.163732], [106.833322, -6.163872], [106.833454, -6.164948], [106.831722, -6.166216], [106.831322, -6.166957], [106.829322, -6.16725], [106.826465, -6.166673], [106.826115, -6.167609], [106.825297, -6.167816], [106.828322, -6.170942], [106.828712, -6.170816], [106.828737, -6.169816], [106.829322, -6.169266], [106.830322, -6.17345], [106.83046, -6.172816], [106.831322, -6.172052], [106.832254, -6.172816], [106.830521, -6.173816], [106.831735, -6.174402], [106.831463, -6.175816], [106.831639, -6.176499], [106.832322, -6.176809], [106.833322, -6.176543], [106.834044, -6.174539], [106.835781, -6.173816], [106.836123, -6.172617], [106.837322, -6.172683], [106.83941, -6.170728], [106.839431, -6.172816], [106.839626, -6.173512], [106.840498, -6.173816], [106.840396, -6.176816], [106.841235, -6.177816], [106.841207, -6.178816], [106.841086, -6.17958], [106.840499, -6.179816], [106.839988, -6.180816], [106.839133, -6.183627], [106.838345, -6.183839], [106.837823, -6.184816], [106.838624, -6.185816], [106.838281, -6.186816], [106.838701, -6.188437], [106.839188, -6.188949], [106.841092, -6.189045], [106.841322, -6.189653], [106.841607, -6.189101], [106.842479, -6.188973], [106.844436, -6.186702], [106.844641, -6.188497], [106.845217, -6.188816], [106.845109, -6.189816], [106.845897, -6.191241], [106.847756, -6.191382], [106.848116, -6.192816], [106.848632, -6.193127], [106.849322, -6.192599], [106.849635, -6.191129], [106.850532, -6.190026], [106.851342, -6.189836], [106.852175, -6.186669], [106.85331, -6.185816], [106.853764, -6.184816], [106.853322, -6.184021], [106.852322, -6.183412], [106.851322, -6.183043], [106.850415, -6.183909], [106.850097, -6.18304], [106.849275, -6.182863], [106.848844, -6.181294], [106.846952, -6.179816], [106.847322, -6.176972], [106.848322, -6.177696], [106.850322, -6.177932], [106.852322, -6.176447], [106.852974, -6.175468], [106.854541, -6.175035], [106.85481, -6.174304], [106.857556, -6.173816], [106.856997, -6.172816], [106.85851, -6.170004], [106.85978, -6.168816], [106.859227, -6.167911], [106.856523, -6.165816], [106.857481, -6.163816], [106.856761, -6.161816], [106.855977, -6.161161], [106.855322, -6.158957], [106.85409, -6.159584], [106.853879, -6.160816], [106.853322, -6.161197], [106.852978, -6.160816], [106.853148, -6.159816], [106.852048, -6.15909], [106.851322, -6.157411], [106.850322, -6.158463], [106.847322, -6.156777], [106.846322, -6.157053], [106.845322, -6.156298], [106.843322, -6.156146], [106.842322, -6.157135], [106.841418, -6.156816], [106.841027, -6.156111], [106.840281, -6.155816], [106.83959, -6.151816], [106.83855, -6.150816], [106.838322, -6.149368]]], "type": "Polygon"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#c7e9c0", "time": 10}, "type": "Feature"}, {"bbox": [106.836983, -6.181833, 106.849322, -6.161339], "geometry": {"coordinates": [[[106.840322, -6.161339], [106.839783, -6.161816], [106.840204, -6.161934], [106.84014, -6.163998], [106.840716, -6.164816], [106.840564, -6.167058], [106.839784, -6.166816], [106.839655, -6.165483], [106.839322, -6.164942], [106.838394, -6.164744], [106.838322, -6.163991], [106.838015, -6.165816], [106.837177, -6.166671], [106.836983, -6.167816], [106.838322, -6.168151], [106.838512, -6.168816], [106.84002, -6.170117], [106.839987, -6.172816], [106.84099, -6.173816], [106.841053, -6.176816], [106.842064, -6.177816], [106.842305, -6.181833], [106.843109, -6.181603], [106.844012, -6.180506], [106.846322, -6.18121], [106.846459, -6.177816], [106.845715, -6.177423], [106.845478, -6.176816], [106.845269, -6.173763], [106.846524, -6.172018], [106.846435, -6.170816], [106.848322, -6.168865], [106.849082, -6.168576], [106.849322, -6.16772], [106.847946, -6.166816], [106.847375, -6.165763], [106.845322, -6.164572], [106.844322, -6.164989], [106.842358, -6.162779], [106.840616, -6.162521], [106.840322, -6.161339]]], "type": "Polygon"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#f7fcf5", "time": 5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_67d138d9b18be212d6791c3db9d0cab0.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["time"];
+    let aliases = ["Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_67d138d9b18be212d6791c3db9d0cab0.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK", "time"];
+    let aliases = ["Nama Terminal:", "Jenis:", "Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_styler(feature) {
+            switch(feature.id) {
+                case "3": 
+                    return {"color": "black", "fillColor": "#d94801", "fillOpacity": 0.5, "weight": 2};
+                case "2": 
+                    return {"color": "black", "fillColor": "#fd8d3c", "fillOpacity": 0.5, "weight": 2};
+                case "1": 
+                    return {"color": "black", "fillColor": "#fdd0a2", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "black", "fillColor": "#fff5eb", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc = L.geoJson(null, {
+                onEachFeature: geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_onEachFeature,
+            
+                style: geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_styler,
+                pointToLayer: geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_pointToLayer
+        });
+
+        function geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_add (data) {
+            geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc
+                .addData(data)
+                .addTo(map_2c1d5001c64639e59a064620b69d8de6);
+        }
+            geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc_add({"bbox": [106.832395, -6.187239, 106.854309, -6.159022], "features": [{"bbox": [106.832395, -6.187239, 106.854309, -6.159022], "geometry": {"coordinates": [[[106.840322, -6.15952], [106.839322, -6.159022], [106.838322, -6.160594], [106.837322, -6.160715], [106.836925, -6.161419], [106.836397, -6.162891], [106.836476, -6.16397], [106.83523, -6.164816], [106.835263, -6.165758], [106.834322, -6.166609], [106.834442, -6.167936], [106.832792, -6.169816], [106.832408, -6.170816], [106.832395, -6.171816], [106.833054, -6.172816], [106.832537, -6.174816], [106.83314, -6.175997], [106.834667, -6.176471], [106.835322, -6.178651], [106.836156, -6.178981], [106.835883, -6.180377], [106.83422, -6.181816], [106.834322, -6.182979], [106.835322, -6.183025], [106.836322, -6.183948], [106.837322, -6.183897], [106.839322, -6.185071], [106.840322, -6.186148], [106.84199, -6.186484], [106.843322, -6.1863], [106.845322, -6.187239], [106.846322, -6.185609], [106.847419, -6.185913], [106.849709, -6.184816], [106.849322, -6.182428], [106.850322, -6.18165], [106.853219, -6.177816], [106.852825, -6.176816], [106.854309, -6.174816], [106.853633, -6.173816], [106.852779, -6.173359], [106.852322, -6.172135], [106.850772, -6.170816], [106.852249, -6.168816], [106.85164, -6.167816], [106.851705, -6.165816], [106.851322, -6.165213], [106.848322, -6.163076], [106.846322, -6.162515], [106.844322, -6.160694], [106.843322, -6.160256], [106.842322, -6.160563], [106.840322, -6.15952]]], "type": "Polygon"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#d94801", "time": 20}, "type": "Feature"}, {"bbox": [106.83441, -6.183962, 106.850461, -6.162633], "geometry": {"coordinates": [[[106.840322, -6.162633], [106.839879, -6.164259], [106.840322, -6.164258], [106.84057, -6.164816], [106.840092, -6.165045], [106.839767, -6.16437], [106.838322, -6.164144], [106.83781, -6.165816], [106.837021, -6.166816], [106.83735, -6.167816], [106.836349, -6.169816], [106.835244, -6.170816], [106.835039, -6.171816], [106.835639, -6.173133], [106.83441, -6.174816], [106.83453, -6.175816], [106.835099, -6.176039], [106.835322, -6.177861], [106.837322, -6.177079], [106.838118, -6.177816], [106.838233, -6.179816], [106.837643, -6.180816], [106.837877, -6.181261], [106.83843, -6.181707], [106.840207, -6.181931], [106.841077, -6.18306], [106.843322, -6.183962], [106.844322, -6.182411], [106.846322, -6.182723], [106.847322, -6.182271], [106.847465, -6.17996], [106.848154, -6.179648], [106.849298, -6.177816], [106.850461, -6.174816], [106.849322, -6.173418], [106.846596, -6.171816], [106.84696, -6.170454], [106.848866, -6.167816], [106.847085, -6.166053], [106.842322, -6.163088], [106.840322, -6.162633]]], "type": "Polygon"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#fd8d3c", "time": 15}, "type": "Feature"}, {"bbox": [106.837121, -6.18034, 106.846925, -6.166132], "geometry": {"coordinates": [[[106.843322, -6.166662], [106.842322, -6.166132], [106.841782, -6.166276], [106.840912, -6.167406], [106.839322, -6.167859], [106.838507, -6.169816], [106.839703, -6.171816], [106.839322, -6.172417], [106.837511, -6.173005], [106.837121, -6.174816], [106.837203, -6.175816], [106.838322, -6.176604], [106.839804, -6.176334], [106.84059, -6.177548], [106.840944, -6.179193], [106.842322, -6.18034], [106.843322, -6.179338], [106.844322, -6.179889], [106.846322, -6.179321], [106.846465, -6.178672], [106.845978, -6.17816], [106.845975, -6.177469], [106.846925, -6.174816], [106.845322, -6.174383], [106.844784, -6.173354], [106.844116, -6.173021], [106.84419, -6.169684], [106.844865, -6.168816], [106.844532, -6.167816], [106.843322, -6.166662]]], "type": "Polygon"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#fdd0a2", "time": 10}, "type": "Feature"}, {"bbox": [106.83998, -6.176777, 106.844532, -6.169711], "geometry": {"coordinates": [[[106.842322, -6.169711], [106.840322, -6.171433], [106.83998, -6.172816], [106.841322, -6.176638], [106.843322, -6.176777], [106.843905, -6.176399], [106.844525, -6.175019], [106.844532, -6.173816], [106.843628, -6.172816], [106.843322, -6.169893], [106.842322, -6.169711]]], "type": "Polygon"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "#fff5eb", "time": 5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["time"];
+    let aliases = ["Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK", "time"];
+    let aliases = ["Nama Terminal:", "Jenis:", "Waktu Tempuh:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_adabcd92e042f3d4120acb0aaa6e438f_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "red", "fillColor": "red", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_adabcd92e042f3d4120acb0aaa6e438f_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_adabcd92e042f3d4120acb0aaa6e438f_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3};
+            
+            let style = geo_json_adabcd92e042f3d4120acb0aaa6e438f_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_adabcd92e042f3d4120acb0aaa6e438f_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_adabcd92e042f3d4120acb0aaa6e438f.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_adabcd92e042f3d4120acb0aaa6e438f_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_adabcd92e042f3d4120acb0aaa6e438f = L.geoJson(null, {
+                onEachFeature: geo_json_adabcd92e042f3d4120acb0aaa6e438f_onEachFeature,
+            
+                style: geo_json_adabcd92e042f3d4120acb0aaa6e438f_styler,
+                pointToLayer: geo_json_adabcd92e042f3d4120acb0aaa6e438f_pointToLayer
+        });
+
+        function geo_json_adabcd92e042f3d4120acb0aaa6e438f_add (data) {
+            geo_json_adabcd92e042f3d4120acb0aaa6e438f
+                .addData(data)
+                .addTo(map_2c1d5001c64639e59a064620b69d8de6);
+        }
+            geo_json_adabcd92e042f3d4120acb0aaa6e438f_add({"bbox": [106.70546899800007, -6.3094503529999315, 106.95216941200005, -6.109254054999951], "features": [{"bbox": [106.90932678900003, -6.182343801999934, 106.90932678900003, -6.182343801999934], "geometry": {"coordinates": [106.90932678900003, -6.182343801999934], "type": "Point"}, "id": "0", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pulogadung", "OBJECTID": 1, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.95216941200005, -6.211988460999976, 106.95216941200005, -6.211988460999976], "geometry": {"coordinates": [106.95216941200005, -6.211988460999976], "type": "Point"}, "id": "1", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pulo Gebang", "OBJECTID": 2, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.88232172300008, -6.3094503529999315, 106.88232172300008, -6.3094503529999315], "geometry": {"coordinates": [106.88232172300008, -6.3094503529999315], "type": "Point"}, "id": "2", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Kampung Rambutan", "OBJECTID": 3, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.70546899800007, -6.154729599999939, 106.70546899800007, -6.154729599999939], "geometry": {"coordinates": [106.70546899800007, -6.154729599999939], "type": "Point"}, "id": "3", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Kalideres", "OBJECTID": 4, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.79074815400008, -6.166506244999937, 106.79074815400008, -6.166506244999937], "geometry": {"coordinates": [106.79074815400008, -6.166506244999937], "type": "Point"}, "id": "4", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Grogol", "OBJECTID": 5, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.88110344900008, -6.109653474999959, 106.88110344900008, -6.109653474999959], "geometry": {"coordinates": [106.88110344900008, -6.109653474999959], "type": "Point"}, "id": "5", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Tanjung Priok", "OBJECTID": 6, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe A", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 1, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.84232173800007, -6.1738158869999324, 106.84232173800007, -6.1738158869999324], "geometry": {"coordinates": [106.84232173800007, -6.1738158869999324], "type": "Point"}, "id": "6", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Senen", "OBJECTID": 7, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.86668721100006, -6.224780333999945, 106.86668721100006, -6.224780333999945], "geometry": {"coordinates": [106.86668721100006, -6.224780333999945], "type": "Point"}, "id": "7", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Kampung Melayu", "OBJECTID": 8, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.80090043400008, -6.243460529999936, 106.80090043400008, -6.243460529999936], "geometry": {"coordinates": [106.80090043400008, -6.243460529999936], "type": "Point"}, "id": "8", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Blok M", "OBJECTID": 9, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.84320063600006, -6.283573930999978, 106.84320063600006, -6.283573930999978], "geometry": {"coordinates": [106.84320063600006, -6.283573930999978], "type": "Point"}, "id": "9", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pasar Minggu", "OBJECTID": 10, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.88576711700006, -6.291344002999949, 106.88576711700006, -6.291344002999949], "geometry": {"coordinates": [106.88576711700006, -6.291344002999949], "type": "Point"}, "id": "10", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Pinang Ranti", "OBJECTID": 11, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.93238754900005, -6.221075525999936, 106.93238754900005, -6.221075525999936], "geometry": {"coordinates": [106.93238754900005, -6.221075525999936], "type": "Point"}, "id": "11", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Klender", "OBJECTID": 12, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.77326998800004, -6.109254054999951, 106.77326998800004, -6.109254054999951], "geometry": {"coordinates": [106.77326998800004, -6.109254054999951], "type": "Point"}, "id": "12", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Muara Angke", "OBJECTID": 13, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.72570326700009, -6.159837956999979, 106.72570326700009, -6.159837956999979], "geometry": {"coordinates": [106.72570326700009, -6.159837956999979], "type": "Point"}, "id": "13", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Rawabuaya", "OBJECTID": 14, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.86623394000009, -6.261170341999957, 106.86623394000009, -6.261170341999957], "geometry": {"coordinates": [106.86623394000009, -6.261170341999957], "type": "Point"}, "id": "14", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Cililitan", "OBJECTID": 15, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.84739787800004, -6.20934886799995, 106.84739787800004, -6.20934886799995], "geometry": {"coordinates": [106.84739787800004, -6.20934886799995], "type": "Point"}, "id": "15", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Manggarai", "OBJECTID": 16, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.89125573000007, -6.197775268999976, 106.89125573000007, -6.197775268999976], "geometry": {"coordinates": [106.89125573000007, -6.197775268999976], "type": "Point"}, "id": "16", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Rawamangun", "OBJECTID": 17, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [106.82022824900008, -6.305532829999947, 106.82022824900008, -6.305532829999947], "geometry": {"coordinates": [106.82022824900008, -6.305532829999947], "type": "Point"}, "id": "17", "properties": {"FCODE": "CA01080200", "JLBTRM": 0.0, "JLDTRM": 0.0, "KATTRM": 0, "KODTRM": null, "KONKON": 0, "METADATA": null, "MGTTRM": null, "NAMOBJ": "Terminal Ragunan", "OBJECTID": 18, "PARTRM": 0, "REMARK": "Terminal Penumpang Tipe B", "SRS_ID": null, "STATRM": 2, "THBTRM": null, "THNOPR": null, "THTTRM": null, "TIPTRM": 2, "__folium_color": "red"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_adabcd92e042f3d4120acb0aaa6e438f.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["NAMOBJ", "REMARK"];
+    let aliases = ["Nama Terminal:", "Jenis:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            L.Control.geocoder(
+                {"collapsed": false, "defaultMarkGeocode": true, "position": "topright"}
+            ).on('markgeocode', function(e) {
+                map_2c1d5001c64639e59a064620b69d8de6.setView(e.geocode.center, 11);
+            }).addTo(map_2c1d5001c64639e59a064620b69d8de6);
+
+        
+    
+            var layer_control_e96127ec892a3f9ff8f1efc3444d720e = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_c4564e0a7c484dc9286de84e136698fb,
+                },
+                overlays :  {
+                    "Berkendara Motor" : geo_json_e72c7af9f4af8d9d0cbf87262f644e27,
+                    "Bersepeda" : geo_json_67d138d9b18be212d6791c3db9d0cab0,
+                    "Berjalan Kaki" : geo_json_e26b2ff1ae91f05d9ceabaab9313f3bc,
+                    "Stasiun" : geo_json_adabcd92e042f3d4120acb0aaa6e438f,
+                },
+            };
+            L.control.layers(
+                layer_control_e96127ec892a3f9ff8f1efc3444d720e.base_layers,
+                layer_control_e96127ec892a3f9ff8f1efc3444d720e.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_2c1d5001c64639e59a064620b69d8de6);
+        
+</script>
+<style>
+    #footer {
+        border-radius: 0px 0px 10px 10px;
+        width: 100%;
+        min-height: 5vh;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        text-align: center;
+        line-height: 25px;
+        position: relative;
+        font: bold 13px 'Outfit';
+        z-index: 5;
+        background-image: url('https://mamedrifqy.github.io/assets/img/background.png');
+    }
+    </style>
+    <footer id="footer">Created Using <a href="https://python-visualization.github.io/folium/" target="_blank">Folium</a> | <a href="https://https://geopandas.org/en/stable/" target="_blank">Geopandas</a> | <a href="https://walker-data.com/mapboxapi/" target="_blank">MapboxAPI</a>
+</html>
